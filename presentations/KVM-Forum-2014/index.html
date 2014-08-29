@@ -4,18 +4,18 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>KVM Forum 2014: VFIO, OVMF, GPU and You</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="VFIO, OVMF, GPU and You">
+		<meta name="author" content="Alex Williamson">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/redhat.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -39,14 +39,16 @@
 	<body>
 
 		<div class="reveal">
+			<a id="logo-white"><img src="./images/Red_Hat_RGB_reverse.svg" alt=""/></a>
+			<a id="logo-black"><img src="./images/Red_Hat_RGB.svg" alt=""/></a>
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+				<section data-state="logo-light" data-background-image="./images/RH-Template-Background8.png">
+					<h2><font color=#ffffff>VFIO, OVMF, GPU, and You</font></h2>
+					<h4><font color=#d0d0d0>The state of GPU assignment in QEMU/KVM</font></h4>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#ff0000>alex.williamson@redhat.com</font></a></small>
 					</p>
 				</section>
 
@@ -348,9 +350,7 @@ function linkify( selector ) {
 					</ul>
 				</section>
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+				<section data-state="logo-none" data-background-image="./images/Red_Hat_RGB.svg" data-background-size="50%">
 				</section>
 
 			</div>
