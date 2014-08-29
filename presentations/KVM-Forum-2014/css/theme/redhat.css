@@ -12,23 +12,23 @@
   position: absolute;
   opacity: 0;
   transition: opacity 0.5s ease-out;
-  bottom: -15%;
-  left: -2%;
+  bottom: 3%;
+  left: 3%;
   z-index: 1; }
 
 #logo-white img {
-  width: 10em; }
+  width: 5em; }
 
 #logo-black {
   position: absolute;
   opacity: 1;
   transition: opacity 0.5s ease-out;
-  bottom: -15%;
-  left: -2%;
+  bottom: 3%;
+  left: 3%;
   z-index: 1; }
 
 #logo-black img {
-  width: 10em; }
+  width: 5em; }
 
 .logo-light #logo-white {
   opacity: 1; }
