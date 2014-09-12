@@ -54,6 +54,318 @@
 				</section>
 
 				<section>
+					<section data-state="logo-light" data-background-image="../images/RH-Template-Background7.jpg">
+						<h2><font color=#e0e0e0>The current state of VGA assignment</font></h2>
+					</section>
+					<section>
+						<h2>VGA assignment defined:</h2>
+						<ul>
+							<li class="fragment">Graphics card assigned as primary graphics for the VM</li>
+							<li class="fragment">Uses VGA BIOS for initialization and runtime services</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Status:</h2>
+						<ul>
+							<div class="fragment">
+								<li>Works for discrete graphics cards</li>
+								<ul>
+									<li>AMD Radeon</li>
+									<li>NVIDIA GeForce</li>
+								</ul>
+							</div>
+							<div class="fragment">
+								<li>Requires "experimental" vfio-pci option</li>
+								<ul>
+									<li>x-vga=on</li>
+								</ul>
+							</div>
+							<div class="fragment">
+								<li>Requires working VGA arbitration</li>
+							</div>
+							<div class="fragment">
+								<li>Still some device specific glitches</li>
+								<ul>
+									<li>BSODs with AMD Catalyst + HDMI audio</li>
+									<li>Reset issues on some Radeon cards</li>
+									<li>Code 43 on GeForce</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Issues:</h2>
+						<ul>
+							<li class="fragment">Requires "experimental" vfio-pci option</li>
+							<ul>
+								<li class="fragment">Not supported by libvirt because experimental</li>
+								<li class="fragment">Experimental because...</li>
+							</ul>
+							<li class="fragment">Requires working VGA arbitration</li>
+							<ul>
+								<li class="fragment">Drivers don't participate (vgacon)</li>
+								<li class="fragment">Drivers lie (i915)</li>
+								<li class="fragment">Xorg DRI cannot handle multiple arbitration participants</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Can't we fix these?</h2>
+						<ul>
+							<li class="fragment">Drivers don't participate</li>
+								<ul><li class="fragment roll-in">fixable</li></ul>
+							<li class="fragment">Drivers lie</li>
+							<div class="fragment roll-in">
+							<ul>
+								<li>Once upon a time...</li>
+								<ul>
+									<li>i915 hardware allowed control of VGA resources</li>
+									<li class="fragment roll-in">designers dropped this feature</li>
+									<li class="fragment">nobody noticed?!</li>
+									<li class="fragment">i915 continues to opt-out anyway</li>
+								</ul>
+								<li class="fragment">But if we fix that...</li>
+							</ul>
+							</div>
+							<li class="fragment">Xorg DRI cannot handle multiple arbitration participants</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Start with fixing Xorg</h2>
+						<p align="left" class="fragment">DRI wants to mmap VGA MMIO space</p>
+						<p align="left" class="fragment">Possible options...</p>
+						<ul>
+							<li class="fragment">Provide a new VGA arbiter interface allowing mmaps</li>
+							<li class="fragment">Remove the mmap requirement</li>
+						</ul>
+						<p align="left" class="fragment">But what about compatibility?</p>
+						<blockquote class="fragment roll-in" cite="https://lkml.org/lkml/2012/12/23/75">
+							&ldquo;WE DO NOT BREAK USERSPACE!&rdquo;
+							<p><small>-Linus Torvalds</small></p>
+						</blockquote>
+					</section>
+					<section>
+						<h2>VGA: Stuck in limbo</h2>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="zoom" data-transition-speed="slow" data-state="logo-light" data-background-image="../images/RH-Template-Background9.png">
+						<h2><font color=#e0e0e0>What else could we do?</font></h2>
+					</section>
+					<section data-transition="zoom">
+						<h2>Can we avoid VGA?</h2>
+					</section>
+					<section>
+						<h3>Secondary graphics device assignment</h3>
+						<ul class="fragment">
+							<li>Emulated VGA for VM primary display</li>
+							<li>Assigned graphics card for secondary</li>
+							<div class="fragment">
+							<li>Supported by NVIDIA</li>
+							<ul>
+								<li>Requires K-series Quadro/GRID/Tesla</li>
+								<li>Supported in RHEL7.0</li>
+							</ul>
+							</div>
+							<li class="fragment">Some reports of success with Radeon</li>
+						</ul>
+						<p>&nbsp</p>
+						<h3 class="fragment">Depends on guest driver support</h3>
+					</section>
+					<section>
+						<h3>Legacy-free UEFI VM</h3>
+						<ul>
+							<li class="fragment">No VGA required</li>
+						</ul>
+						<p>&nbsp</p>
+						<h3 class="fragment"><font color=#cc0000>No VGA arbitration required!</font></h3>
+					</section>
+					<section data-transition="zoom" data-transition-speed="slow">
+						<h2>Problem solved?</h2>
+						<h3 align="left">VGA Issues:</h3>
+						<ul>
+							<div class="fragment fade-out" data-fragment-index="1">
+							<li>Requires "experimental" vfio-pci option</li>
+							<ul>
+								<li>Not supported by libvirt because experimental</li>
+								<li>Experimental because...</li>
+							</ul>
+							</div>
+							<div class="fragment fade-out" data-fragment-index="2">
+							<li>Requires working VGA arbitration</li>
+							<ul>
+								<li>Drivers don't participate (vgacon)</li>
+								<li>Drivers lie (i915)</li>
+								<li>Xorg DRI cannot handle multiple arbitration participants</li>
+							</ul>
+							</div>
+						</ul>
+					</section>
+					<section data-transition="zoom">
+						<h2><font color=#cc0000>No Blockers</font></h2>
+					</section>
+				</section>
+
+				<section>
+					<section data-state="logo-dark" data-background-image="../images/RH-Template-Background2.png">
+						<h2><font color=#000000>How do UEFI?</font></h2>
+					</section>
+					<section>
+						<h3>Step 1: OVMF</h3>
+						<ul>
+						<li class="fragment">Open Virtual Machine Firmware</li>
+						<li class="fragment">An implementation of UEFI built on the EDK II code base</li>
+						<li class="fragment">Replaces Seabios</li>
+						</ul>
+						<div class="fragment">
+							<p>via command line:</p>
+							<pre><code>
+								/usr/libexec/qemu-kvm ... \
+								    -drive if=pflash,format=raw,file=/path/to/OVMF.fd
+							</pre></code>
+						</div>
+						<div class="fragment">
+							<p>via libvirt:</p>
+							<pre><code>
+  							<domain type='kvm'>
+							  ...
+    							  <os>
+    							    <loader type='pflash'>/var/lib/libvirt/images/OVMF.fd</loader>
+							    ...
+  							  </os>
+							  ...
+  							</domain>
+							</pre></code>
+						</div>
+					</section>
+					<section>
+						<h3>Step 2: EFI graphics card ROM</h3>
+						<p>PCI ROMs can support muliple images</p>
+						<p>Most newer cards already support EFI</p>
+					</section>
+					<section>
+						<h3>Step 3: UEFI compatible guest</h3>
+						<p>Newer versions of Linux</p>
+						<p>Windows 8, Server 2012</p>
+					</section>
+				</section>
+				<section>
+					<section data-state="logo-light" data-background-image="../images/RH-Template-Background5.jpg">
+						<h2><font color=#ffffff>Remaining Issues</font></h2>
+					</section>
+					<section data-transition="linear">
+						<h3>440fx vs q35</h3>
+						<p class="fragment">q35 originally recommended for VFIO-VGA</p>
+						<p>&nbsp</p>
+						<p class="fragment">Largely FUD</p>
+						<ul class="fragment">
+							<li>q35 <i>looks</i> more like the host platform</li>
+							<li>Some Linux drivers <i>assume</i> an upstream PCIe port</li>
+						</ul>
+					</section>
+					<section data-transition="linear">
+						<h3>440fx vs q35</h3>
+						<p>In reality</p>
+						<ul>
+							<li>Windows doesn't care</li>
+							<li>Linux is fixable</li>
+						</ul>
+					</section>
+					<section data-transition="linear">
+						<h3>440fx vs q35</h3>
+						<p>OVMF recently added q35 support</p>
+						<p>libvirt includes only basic q35 support</p>
+						<p>&nbsp</p>
+						<p class="fragment">440fx is likely the <i>easier</i> path for Windows guests</p>
+					</section>
+					<section>
+						<h3>NVIDIA: Code 43</h3>
+						<p class="fragment">Proprietary driver issue (version 337.88+)</p>
+						<p class="fragment">We can't solve it, but we can work around it</p>
+						<div class="fragment">
+							<p>via command line:</p>
+							<pre><code>
+								    -cpu [type],kvm=off
+							</pre></code>
+						</div>
+						<div class="fragment">
+							<p>via libvirt:</p>
+							<pre><code>
+  							&ltdomain type='kvm'&gt
+							  ...
+    							  &ltfeatures&gt
+							    &ltkvm&gt
+							      &lthidden state='on'/&gt
+							    &lt/kvm&gt
+							    ...
+  							  &lt/features&gt
+							  ...
+  							&lt/domain&gt
+							</pre></code>
+						</div>
+					</section>
+					<section>
+						<h3>Quirks</h3>
+						<div class="fragment" data-fragment-index="1" align="center">
+						<table style="width:50%">
+							<tr>
+								<td>GeForce:</td>
+								<td class="fragment roll-in" data-fragment-index="2">One still required<sup>*</sup></td>
+							</tr>
+							<tr><td>&nbsp</td></tr>
+							<tr>
+								<td>Radeon:</td>
+								<td class="fragment roll-in" data-fragment-index="3">Not needed!</td>
+							</tr>
+						</table>
+						<p>&nbsp</p>
+						<p class="fragment roll-in" data-fragment-index="2"><small><sup>*</sup>QEMU now enables this independent of x-vga</small></p>
+						</div>
+					</section>
+					<section>
+						<h3>Outstanding issues</h3>
+						<ul>
+							<li class="fragment">Reset on Radeon</li>
+							<ul>
+								<li class="fragment">Some cards report PM reset support</li>
+								<ul><li class="fragment">doesn't work</li></ul>
+								<li class="fragment">Some users report needing host resets</li>
+								<li class="fragment">Many cards work without issue</li>
+							</ul>
+							<li class="fragment">BSOD with AMD Catalyst Control Center</li>
+							<ul>
+								<li class="fragment">Workaround: don't pass HDMI audio</li>
+								<li class="fragment">Also doesn't appear to affect all users</li>
+							</ul>
+							<li class="fragment">Host suspend</li>
+							<ul>
+								<li class="fragment">And ponies!</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section data-state="logo-dark" data-background-image="../images/RH-Template-Background4.jpg">
+					<h2><font color=#000000>Resources</font></h2>
+					<ul>
+						<li><font color=#000000>VFIO tips and tricks blog:</font></li>
+						<p><a href="http://vfio.blogspot.com">http://vfio.blogspot.com</a></p>
+						<li><font color=#000000>This presentation:</font></li>
+						<p><a href="http://awilliam.github.io/presentations/KVM-Forum-2014">http://awilliam.github.io/presentations/KVM-Forum-2014</a></p>
+					</ul>
+				</section>
+
+				<section data-background-image="../images/RH-Template-Background1.jpg" data-transition="linear" data-background-transition="slide">
+					<h1 class="fragment fade-out" data-fragment-index="1"><font color=#e0e0e0>Try it!</font></h1>
+					<h2 class="fragment current-visible" data-fragment-index="1"><font color=#e0e0e0>Question?</font></h2>
+					<h2 class="fragment"><font color=#e0e0e0>Thank you</font></h2>
+				</section>
+
+				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-background-transition="zoom" data-background-size="50%">
+				</section>
+<!-- Unused...
+				<section>
 					<h2>Heads Up</h2>
 					<p>
 						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
@@ -65,7 +377,6 @@
 					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
 						<h2>Vertical Slides</h2>
@@ -142,7 +453,7 @@
 
 				<section data-markdown>
 					<script type="text/template">
-						## Markdown support
+						# Markdown support
 
 						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
 
@@ -315,6 +626,7 @@ function linkify( selector ) {
 						<p class="fragment highlight-blue">highlight-blue</p>
 						<p class="fragment current-visible">current-visible</p>
 						<p class="fragment highlight-current-blue">highlight-current-blue</p>
+						<p class="fragment">normal</p>
 					</section>
 				</section>
 
@@ -350,9 +662,7 @@ function linkify( selector ) {
 						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
 					</ul>
 				</section>
-
-				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-background-size="50%">
-				</section>
+-->
 
 			</div>
 
