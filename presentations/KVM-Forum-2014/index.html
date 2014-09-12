@@ -222,21 +222,21 @@
 						<div class="fragment">
 							<p>via command line:</p>
 							<pre><code>
-/usr/libexec/qemu-kvm ... \
-    -drive if=pflash,format=raw,file=/path/to/OVMF.fd
+    /usr/libexec/qemu-kvm ... \
+        -drive if=pflash,format=raw,file=/path/to/OVMF.fd
 							</pre></code>
 						</div>
 						<div class="fragment">
 							<p>via libvirt:</p>
 							<pre><code>
-&lt;domain type='kvm'&gt;
-  ...
-  &lt;os&gt;
-    &lt;loader type='pflash'&gt;/var/lib/libvirt/images/OVMF.fd&lt;/loader&gt;
-    ...
-  &lt;/os&gt;
-  ...
-&lt;/domain&gt;
+    &lt;domain type='kvm'&gt;
+      ...
+      &lt;os&gt;
+        &lt;loader type='pflash'&gt;/var/lib/libvirt/images/OVMF.fd&lt;/loader&gt;
+        ...
+      &lt;/os&gt;
+      ...
+    &lt;/domain&gt;
 							</pre></code>
 						</div>
 					</section>
@@ -284,26 +284,28 @@
 						<h3>NVIDIA: Code 43</h3>
 						<p class="fragment">Proprietary driver issue (version 337.88+)</p>
 						<p class="fragment">We can't solve it, but we can work around it</p>
+						<div style="width:60%; margin-left:20%">
 						<div class="fragment">
 							<p>via command line:</p>
 							<pre><code>
--cpu [type],kvm=off
+    -cpu [type],kvm=off
 							</pre></code>
 						</div>
 						<div class="fragment">
 							<p>via libvirt:</p>
 							<pre><code>
-&lt;domain type='kvm'&gt;
-  ...
-  &lt;features&gt;
-    &lt;kvm&gt;
-      &lt;hidden state='on'/&gt;
-    &lt;/kvm&gt;
-    ...
-  &lt;/features&gt;
-  ...
-&lt;/domain&gt;
+    &lt;domain type='kvm'&gt;
+      ...
+      &lt;features&gt;
+        &lt;kvm&gt;
+          &lt;hidden state='on'/&gt;
+        &lt;/kvm&gt;
+        ...
+      &lt;/features&gt;
+      ...
+    &lt;/domain&gt;
 							</pre></code>
+						</div>
 						</div>
 					</section>
 					<section>
