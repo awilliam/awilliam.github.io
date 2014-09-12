@@ -45,7 +45,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-state="logo-light" data-background-image="../images/RH-Template-Background8.png">
+				<section data-state="logo-light" data-background-image="../images/RH-Template-Background8.jpg">
 					<h2><font color=#ffffff>VFIO, OVMF, GPU, and You</font></h2>
 					<h4><font color=#d0d0d0>The state of GPU assignment in QEMU/KVM</font></h4>
 					<p>
@@ -150,7 +150,7 @@
 				</section>
 
 				<section>
-					<section data-transition="zoom" data-transition-speed="slow" data-state="logo-light" data-background-image="../images/RH-Template-Background9.png">
+					<section data-transition="zoom" data-transition-speed="slow" data-state="logo-light" data-background-image="../images/RH-Template-Background9.jpg">
 						<h2><font color=#e0e0e0>What else could we do?</font></h2>
 					</section>
 					<section data-transition="zoom">
@@ -170,7 +170,7 @@
 							</div>
 							<li class="fragment">Some reports of success with Radeon</li>
 						</ul>
-						<p>&nbsp</p>
+						<p>&nbsp;</p>
 						<h3 class="fragment">Depends on guest driver support</h3>
 					</section>
 					<section>
@@ -178,7 +178,7 @@
 						<ul>
 							<li class="fragment">No VGA required</li>
 						</ul>
-						<p>&nbsp</p>
+						<p>&nbsp;</p>
 						<h3 class="fragment"><font color=#cc0000>No VGA arbitration required!</font></h3>
 					</section>
 					<section data-transition="zoom" data-transition-speed="slow">
@@ -208,7 +208,7 @@
 				</section>
 
 				<section>
-					<section data-state="logo-dark" data-background-image="../images/RH-Template-Background2.png">
+					<section data-state="logo-dark" data-background-image="../images/RH-Template-Background2.jpg">
 						<h2><font color=#000000>How do UEFI?</font></h2>
 					</section>
 					<section>
@@ -221,21 +221,21 @@
 						<div class="fragment">
 							<p>via command line:</p>
 							<pre><code>
-								/usr/libexec/qemu-kvm ... \
-								    -drive if=pflash,format=raw,file=/path/to/OVMF.fd
+/usr/libexec/qemu-kvm ... \
+    -drive if=pflash,format=raw,file=/path/to/OVMF.fd
 							</pre></code>
 						</div>
 						<div class="fragment">
 							<p>via libvirt:</p>
 							<pre><code>
-  							<domain type='kvm'>
-							  ...
-    							  <os>
-    							    <loader type='pflash'>/var/lib/libvirt/images/OVMF.fd</loader>
-							    ...
-  							  </os>
-							  ...
-  							</domain>
+&lt;domain type='kvm'&gt;
+  ...
+  &lt;os&gt;
+    &lt;loader type='pflash'&gt;/var/lib/libvirt/images/OVMF.fd&lt;/loader&gt;
+    ...
+  &lt;/os&gt;
+  ...
+&lt;/domain&gt;
 							</pre></code>
 						</div>
 					</section>
@@ -257,7 +257,7 @@
 					<section data-transition="linear">
 						<h3>440fx vs q35</h3>
 						<p class="fragment">q35 originally recommended for VFIO-VGA</p>
-						<p>&nbsp</p>
+						<p>&nbsp;</p>
 						<p class="fragment">Largely FUD</p>
 						<ul class="fragment">
 							<li>q35 <i>looks</i> more like the host platform</li>
@@ -276,7 +276,7 @@
 						<h3>440fx vs q35</h3>
 						<p>OVMF recently added q35 support</p>
 						<p>libvirt includes only basic q35 support</p>
-						<p>&nbsp</p>
+						<p>&nbsp;</p>
 						<p class="fragment">440fx is likely the <i>easier</i> path for Windows guests</p>
 					</section>
 					<section>
@@ -286,22 +286,22 @@
 						<div class="fragment">
 							<p>via command line:</p>
 							<pre><code>
-								    -cpu [type],kvm=off
+-cpu [type],kvm=off
 							</pre></code>
 						</div>
 						<div class="fragment">
 							<p>via libvirt:</p>
 							<pre><code>
-  							&ltdomain type='kvm'&gt
-							  ...
-    							  &ltfeatures&gt
-							    &ltkvm&gt
-							      &lthidden state='on'/&gt
-							    &lt/kvm&gt
-							    ...
-  							  &lt/features&gt
-							  ...
-  							&lt/domain&gt
+&lt;domain type='kvm'&gt;
+  ...
+  &lt;features&gt;
+    &lt;kvm&gt;
+      &lt;hidden state='on'/&gt;
+    &lt;/kvm&gt;
+    ...
+  &lt;/features&gt;
+  ...
+&lt;/domain&gt;
 							</pre></code>
 						</div>
 					</section>
@@ -313,13 +313,13 @@
 								<td>GeForce:</td>
 								<td class="fragment roll-in" data-fragment-index="2">One still required<sup>*</sup></td>
 							</tr>
-							<tr><td>&nbsp</td></tr>
+							<tr><td>&nbsp;</td></tr>
 							<tr>
 								<td>Radeon:</td>
 								<td class="fragment roll-in" data-fragment-index="3">Not needed!</td>
 							</tr>
 						</table>
-						<p>&nbsp</p>
+						<p>&nbsp;</p>
 						<p class="fragment roll-in" data-fragment-index="2"><small><sup>*</sup>QEMU now enables this independent of x-vga</small></p>
 						</div>
 					</section>
