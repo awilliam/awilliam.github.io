@@ -218,24 +218,28 @@
 						<li class="fragment">Open Virtual Machine Firmware</li>
 						<li class="fragment">An implementation of UEFI built on the EDK II code base</li>
 						<li class="fragment">Replaces Seabios</li>
+					</section>
+					<section>
+						<h3>OVMF Setup</h3>
 						</ul>
 						<div class="fragment">
 							<p>via command line:</p>
 							<pre><code>
     /usr/libexec/qemu-kvm ... \
-        -drive if=pflash,format=raw,file=/path/to/OVMF.fd
+        -drive if=pflash,format=raw,readonly,file=/path/to/OVMF_CODE.fd \
+        -drive if=pflash,format=raw,file=/copy/of/OVMF_VARS.fd
 							</pre></code>
 						</div>
-						<div class="fragment">
+						<div class="fragment" style="width:140%; margin-left:-20%">
 							<p>via libvirt:</p>
 							<pre><code>
     &lt;domain type='kvm'&gt;
       ...
       &lt;os&gt;
-        &lt;loader type='pflash'&gt;/var/lib/libvirt/images/OVMF.fd&lt;/loader&gt;
+        &lt;loader readonly='yes' type='pflash'&gt;/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd&lt;/loader&gt;
+        &lt;nvram template='/usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd'/&gt;
         ...
       &lt;/os&gt;
-      ...
     &lt;/domain&gt;
 							</pre></code>
 						</div>
