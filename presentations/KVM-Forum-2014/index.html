@@ -146,7 +146,9 @@
 						</blockquote>
 					</section>
 					<section>
-						<h2>VGA: Stuck in limbo</h2>
+						<h2>VGA assignment status:</h2>
+						<p>&nbsp;</p>
+						<h2 class="fragment"><font color=ff0000>Stuck</font></h2>
 					</section>
 				</section>
 
@@ -281,6 +283,7 @@
 						<h3>440fx vs q35</h3>
 						<p>OVMF recently added q35 support</p>
 						<p>libvirt includes only basic q35 support</p>
+							<ul><li class="fragment">restricted configurations</li></ul>
 						<p>&nbsp;</p>
 						<p class="fragment">440fx is likely the <i>easier</i> path for Windows guests</p>
 					</section>
@@ -306,7 +309,6 @@
         &lt;/kvm&gt;
         ...
       &lt;/features&gt;
-      ...
     &lt;/domain&gt;
 							</pre></code>
 						</div>
@@ -333,18 +335,33 @@
 					<section>
 						<h3>Outstanding issues</h3>
 						<ul>
-							<li class="fragment">Reset on Radeon</li>
+							<div class="fragment">
+							<li>Radeon device resets</li>
 							<ul>
-								<li class="fragment">Some cards report PM reset support</li>
-								<ul><li class="fragment">doesn't work</li></ul>
-								<li class="fragment">Some users report needing host resets</li>
-								<li class="fragment">Many cards work without issue</li>
+								<li>Some users report needing host reset</li>
+								<li>Some devices indicate PM reset capability</li>
+									<ul><li class="fragment">doesn't work</li></ul>
 							</ul>
-							<li class="fragment">BSOD with AMD Catalyst Control Center</li>
+							</div>
+
+							<div class="fragment">
+							<li>Radeon BSOD</li>
 							<ul>
-								<li class="fragment">Workaround: don't pass HDMI audio</li>
-								<li class="fragment">Also doesn't appear to affect all users</li>
+								<li>Typically resolved by avoiding audio function</li>
 							</ul>
+							</div>
+
+							<div class="fragment">
+							<li>GeForce audio glitches</li>
+							<ul>
+								<li>More on Quadro than GeForce</li>
+								<li>Poor interrupt masking support</li>
+									<ul><li class="fragment">try to use MSI if affected</li></ul>
+							</ul>
+							</div>
+
+							<li class="fragment">Intel Graphics support</li>
+
 							<li class="fragment">Host suspend</li>
 							<ul>
 								<li class="fragment">And ponies!</li>
@@ -369,7 +386,7 @@
 					<h2 class="fragment"><font color=#e0e0e0>Thank you</font></h2>
 				</section>
 
-				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="50%">
+				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
 					<div style="margin-top:40%">
 						<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
 					</div>
