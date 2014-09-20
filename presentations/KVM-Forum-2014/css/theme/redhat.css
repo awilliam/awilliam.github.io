@@ -38,6 +38,23 @@
 .logo-none #logo-black {
   opacity: 0; }
 
+.side-by-side {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  box-sizing: border-box; }
+
+.side-by-side .side {
+  -webkit-flex: 1 0 0;
+  -moz-flex: 1 0 0;
+  flex: 1 0 0; }
+
+.side-by-side .side.fix-w3c {
+  display: flex; }
+
+.side-by-side .side + .side {
+  margin-left: 2rem; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/

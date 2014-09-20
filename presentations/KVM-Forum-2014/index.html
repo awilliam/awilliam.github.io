@@ -288,16 +288,18 @@
 					</section>
 					<section>
 						<h3>NVIDIA: Code 43</h3>
-						<p class="fragment">Proprietary driver issue (version 337.88+)</p>
+						<p class="fragment" data-fragment-index="1">Driver detects KVM hypervisor, fails to initialize<sup>*</sup></p>
+						<p class="fragment">Nvidia - "Accidental" breakage, won't fix, unsupported</p>
 						<p class="fragment">We can't solve it, but we can work around it</p>
-						<div style="width:60%; margin-left:20%">
-						<div class="fragment">
+						<p class="fragment">Hide the hypervisor</p>
+						<div class="side-by-side">
+						<div class="side fragment">
 							<p>via command line:</p>
 							<pre><code>
     -cpu [type],kvm=off
 							</pre></code>
 						</div>
-						<div class="fragment">
+						<div class="side fragment">
 							<p>via libvirt:</p>
 							<pre><code>
     &lt;domain type='kvm'&gt;
@@ -312,6 +314,20 @@
 							</pre></code>
 						</div>
 						</div>
+						<p>&nbsp;</p>
+						<p class="fragment" data-fragment-index="1"><small><sup>*</sup>NVIDIA driver version 338.77+</small></p>
+					</section>
+					<section>
+						<h3>NVIDIA: Code 43 Redux</h3>
+						<p class="fragment" data-fragment-index="1">Driver detects Hyper-V extensions, fails to initialize<sup>*</sup></p>
+						<p class="fragment">Workaround: Disable use of Hyper-V extensions</p>
+						<p class="fragment">Performance hit for Windows VMs</p>
+						<p class="fragment">Have we entered an arms race?</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p class="fragment" data-fragment-index="1"><small><sup>*</sup>NVIDIA driver version 344.11</small></p>
 					</section>
 					<section>
 						<h3>Quirks</h3>
@@ -379,10 +395,11 @@
 					</ul>
 				</section>
 
-				<section data-background-image="../images/RH-Template-Background1.jpg" data-transition="linear" data-background-transition="slide">
+				<!-- <section data-background-image="../images/RH-Template-Background1.jpg" data-transition="linear" data-background-transition="slide"> -->
+				<section data-background-image="./images/unigine-valley.gif" data-transition="linear" data-background-transition="slide" data-background-size="1024x768">
 					<h1 class="fragment fade-out" data-fragment-index="1"><font color=#e0e0e0>Try it!</font></h1>
-					<h2 class="fragment current-visible" data-fragment-index="1"><font color=#e0e0e0>Question?</font></h2>
-					<h2 class="fragment"><font color=#e0e0e0>Thank you</font></h2>
+					<h2 class="fragment current-visible" data-fragment-index="1"><font color=#e0e0e0>Questions?</font></h2>
+					<h1 class="fragment"><font color=#e0e0e0>Thank you</font></h1>
 				</section>
 
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
