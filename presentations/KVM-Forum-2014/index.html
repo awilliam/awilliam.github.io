@@ -46,18 +46,20 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Notice</h1>
-					<h2>If this presentation is found prior to KVM Forum 2014</h2>
-					<h2>Düsseldorf, Germany October 14 - 16, 2014</h2>
-					<h2>It would be <b>greatly</b> appreciated to not advertise or share it with others</h2>
-					<h2>Thank you</h2>
+					<h2>Notice</h2>
+					<h3>If this presentation is found prior to KVM Forum 2014</h3>
+					<h3>Düsseldorf, Germany October 14 - 16, 2014</h3>
+					<h3>It would be <b>greatly</b> appreciated to not advertise or share it with others</h3>
+					<h3>Thank you</h3>
 				</section>
 				<section data-state="logo-light" data-background-image="../images/RH-Template-Background8.jpg">
+					<div style="width:130%; margin-left:-15%">
 					<h2><font color=#ffffff>VFIO, OVMF, GPU, and You</font></h2>
-					<h4><font color=#d0d0d0>The state of GPU assignment in QEMU/KVM</font></h4>
+					<h3><font color=#d0d0d0>The state of GPU assignment in QEMU/KVM</font></h3>
 					<p>
-						<small><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#ff0000>alex.williamson@redhat.com</font></a></small>
+						<font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#ff0000>alex.williamson@redhat.com</font></a>
 					</p>
+					</div>
 				</section>
 
 				<section>
@@ -66,11 +68,13 @@
 						<h2><font color=#e0e0e0>assignment</font></h2>
 					</section>
 					<section>
+						<div style="width:110%">
 						<h2>VGA assignment defined:</h2>
 						<ul>
 							<li class="fragment">Graphics card assigned as primary graphics for the VM</li>
 							<li class="fragment">Uses VGA BIOS for initialization and runtime services</li>
 						</ul>
+						</div>
 					</section>
 					<section>
 						<h2>Status:</h2>
@@ -223,9 +227,11 @@
 					</section>
 					<section>
 						<h3>Step 1: OVMF</h3>
+						<div style="width:110%">
 						<p>Open Virtual Machine Firmware</p>
 						<p>An implementation of UEFI built on the EDK II code base</p>
 						<p>Replaces Seabios</p>
+						</div>
 					</section>
 					<section>
 						<h3>OVMF Setup</h3>
@@ -321,7 +327,6 @@
 							</pre></code>
 						</div>
 						</div>
-						<p>&nbsp;</p>
 						<p class="fragment" data-fragment-index="1"><small><sup>*</sup>NVIDIA driver version 338.77+</small></p>
 					</section>
 					<section>
@@ -339,7 +344,7 @@
 					<section>
 						<h3>Quirks</h3>
 						<div class="fragment" data-fragment-index="1" align="center">
-						<table style="width:50%">
+						<table style="width:60%">
 							<tr>
 								<td>GeForce:</td>
 								<td class="fragment roll-in" data-fragment-index="2">One still required<sup>*</sup></td>
@@ -394,7 +399,7 @@
 
 				<section data-state="logo-dark" data-background-image="../images/RH-Template-Background4.jpg">
 					<h2><font color=#000000>Resources</font></h2>
-					<ul>
+					<ul style="width:110%">
 						<li><font color=#000000>VFIO tips and tricks blog:</font></li>
 						<p><a href="http://vfio.blogspot.com">http://vfio.blogspot.com</a></p>
 						<li><font color=#000000>This presentation:</font></li>
@@ -402,14 +407,12 @@
 					</ul>
 				</section>
 
-				<section data-background-image="./images/unigine-valley.gif" data-transition="linear" data-background-transition="slide">
+				<section data-background-image="./images/unigine-valley-16:9.gif" data-transition="linear" data-background-transition="slide">
+					<div style="margin-bottom:10%">
 					<h1 class="fragment fade-out" data-fragment-index="1"><font color=#e0e0e0>Try it!</font></h1>
 					<h2 class="fragment current-visible" data-fragment-index="1"><font color=#e0e0e0>Questions?</font></h2>
 					<h1 class="fragment"><font color=#e0e0e0>Thank you</font></h1>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
+					</div>
 				</section>
 
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
