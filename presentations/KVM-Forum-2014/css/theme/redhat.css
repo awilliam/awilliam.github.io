@@ -63,7 +63,7 @@ body {
   background-color: white; }
 
 .reveal {
-  font-family: "Overpass", sans-serif;
+  font-family: "Overpass", Overpass, Helvetica, helvetica, arial, sans-serif;
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
@@ -85,7 +85,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #60605b;
-  font-family: "Overpass", sans-serif;
+  font-family: "Overpass", Overpass, Helvetica, helvetica, arial, sans-serif;
   line-height: 0.9em;
   letter-spacing: -0.01em;
   text-transform: none;

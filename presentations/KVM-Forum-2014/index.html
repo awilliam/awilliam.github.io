@@ -45,11 +45,12 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section style="width:130%; margin-left:-15%">
 					<h2>Notice</h2>
-					<h3>If this presentation is found prior to KVM Forum 2014</h3>
-					<h3>Düsseldorf, Germany October 14 - 16, 2014</h3>
-					<h3>It would be <b>greatly</b> appreciated to not advertise or share it with others</h3>
+					<h3>This presentation is for KVM Forum 2014</h3>
+					<h3>Düsseldorf, Germany, October 14 - 16, 2014</h3>
+					<h3>Please do not advertise or share with others</h3>
+					<h3>if found prior to these dates.</h3>
 					<h3>Thank you</h3>
 				</section>
 				<section data-state="logo-light" data-background-image="../images/RH-Template-Background8.jpg">
@@ -64,11 +65,11 @@
 
 				<section>
 					<section data-state="logo-light" data-background-image="../images/RH-Template-Background7.jpg">
-						<h2><font color=#e0e0e0>The current state of VGA</font></h2>
-						<h2><font color=#e0e0e0>assignment</font></h2>
+						<h2><font color=#e0e0e0>The current state of</font></h2>
+						<h2><font color=#e0e0e0>VGA assignment</font></h2>
 					</section>
 					<section>
-						<div style="width:110%">
+						<div style="width:110%; margin-left:-5%">
 						<h2>VGA assignment defined:</h2>
 						<ul>
 							<li class="fragment">Graphics card assigned as primary graphics for the VM</li>
@@ -82,12 +83,12 @@
 							<div class="fragment">
 								<li>Works for discrete graphics cards</li>
 								<ul>
-									<li>AMD Radeon</li>
-									<li>NVIDIA GeForce</li>
+									<li>AMD Radeon (HD5xxx+)</li>
+									<li>NVIDIA GeForce (8-series+)</li>
 								</ul>
 							</div>
 							<div class="fragment">
-								<li>Requires "experimental" vfio-pci option</li>
+								<li>Requires <i>experimental</i> vfio-pci option</li>
 								<ul>
 									<li>x-vga=on</li>
 								</ul>
@@ -108,7 +109,7 @@
 					<section>
 						<h2>Issues:</h2>
 						<ul>
-							<li class="fragment">Requires "experimental" vfio-pci option</li>
+							<li class="fragment">Requires <i>experimental</i> vfio-pci option, x-vga=on</li>
 							<ul>
 								<li class="fragment">Not supported by libvirt because experimental</li>
 								<li class="fragment">Experimental because...</li>
@@ -168,7 +169,7 @@
 						<h2><font color=#e0e0e0>What else could we do?</font></h2>
 					</section>
 					<section data-transition="zoom" data-state="logo-light" data-background-image="../images/RH-Template-Background9.jpg">
-						<h2><font color=#e0e0e0>Can we avoid VGA?</font></h2>
+						<h2><font color=#e0e0e0>Do we really need VGA?</font></h2>
 					</section>
 					<section>
 						<h3>Secondary graphics</h3>
@@ -227,7 +228,7 @@
 					</section>
 					<section>
 						<h3>Step 1: OVMF</h3>
-						<div style="width:110%">
+						<div style="width:110%; margin-left:-5%">
 						<p>Open Virtual Machine Firmware</p>
 						<p>An implementation of UEFI built on the EDK II code base</p>
 						<p>Replaces Seabios</p>
@@ -267,6 +268,9 @@
 						<h3>Step 3: UEFI compatible guest</h3>
 						<p>Newer versions of Linux</p>
 						<p>Windows 8, Server 2012</p>
+					</section>
+					<section data-transition="zoom">
+						<h2>That's it!</h2>
 					</section>
 				</section>
 				<section>
@@ -365,8 +369,8 @@
 							<div class="fragment">
 							<li>Radeon device resets</li>
 							<ul>
-								<li>Some users report needing host reset</li>
-								<li>Some devices indicate PM reset capability</li>
+								<li>Sea Island GPUs don't reset correctly</li>
+								<li>Southern Island GPUs indicate PM reset capability</li>
 									<ul><li class="fragment">doesn't work</li></ul>
 							</ul>
 							</div>
@@ -389,7 +393,7 @@
 
 							<li class="fragment">Intel Graphics support</li>
 
-							<li class="fragment">Host suspend</li>
+							<li class="fragment">Host/Guest suspend</li>
 							<ul>
 								<li class="fragment">And ponies!</li>
 							</ul>

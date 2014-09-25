@@ -15,9 +15,10 @@
 @import "../../../fonts/overpass.css";
 
 // Override theme settings (see ../template/settings.scss)
-$mainFont: 'Overpass', sans-serif;
+$mainFont: 'Overpass',Overpass,Helvetica,helvetica,arial,sans-serif;
+
 $mainColor: #60605b;
-$headingFont: 'Overpass', sans-serif;
+$headingFont: 'Overpass',Overpass,Helvetica,helvetica,arial,sans-serif;
 $headingColor: #60605b;
 $headingLetterSpacing: -0.01em;
 $headingTextShadow: none;
