@@ -118,7 +118,7 @@
 							<ul>
 								<li class="fragment">Drivers don't participate (vgacon)</li>
 								<li class="fragment">Drivers lie (i915)</li>
-								<li class="fragment">Xorg DRI cannot handle multiple arbitration participants</li>
+								<li class="fragment">Xorg DRI can't handle multiple arbitration participants</li>
 							</ul>
 						</ul>
 					</section>
@@ -140,7 +140,7 @@
 								<li class="fragment">But if we fix that...</li>
 							</ul>
 							</div>
-							<li class="fragment">Xorg DRI cannot handle multiple arbitration participants</li>
+							<li class="fragment">Xorg DRI can't handle multiple arbitration participants</li>
 						</ul>
 					</section>
 					<section>
@@ -275,33 +275,25 @@
 				</section>
 				<section>
 					<section data-state="logo-light" data-background-image="../images/RH-Template-Background5.jpg">
-						<h2><font color=#ffffff>Remaining Issues</font></h2>
+						<h2><font color=#ffffff>Other GPU Topics</font></h2>
 					</section>
 					<section data-transition="linear">
-						<h3>440fx vs q35</h3>
-						<p class="fragment">q35 originally recommended for VFIO-VGA</p>
+						<h3>440FX vs Q35</h3>
+						<p class="fragment">Q35 originally recommended for VFIO-VGA</p>
 						<p>&nbsp;</p>
 						<p class="fragment">Largely FUD</p>
 						<ul class="fragment">
-							<li>q35 <i>looks</i> more like the host platform</li>
+							<li>Q35 <i>looks</i> more like the host platform</li>
 							<li>Some Linux drivers <i>assume</i> an upstream PCIe port</li>
 						</ul>
-					</section>
-					<section data-transition="linear">
-						<h3>440fx vs q35</h3>
-						<p>In reality</p>
-						<ul>
+						<p>&nbsp;</p>
+						<p class="fragment">In reality</p>
+						<ul class="fragment">
 							<li>Windows doesn't care</li>
 							<li>Linux is fixable</li>
 						</ul>
-					</section>
-					<section data-transition="linear">
-						<h3>440fx vs q35</h3>
-						<p>OVMF recently added q35 support</p>
-						<p>libvirt includes basic q35 support</p>
-							<ul><li class="fragment">restricted configurations</li></ul>
 						<p>&nbsp;</p>
-						<p class="fragment">440fx is likely the <i>easier</i> path for Windows guests</p>
+						<p class="fragment">440FX is likely the <i>easier</i> path for Windows guests</p>
 					</section>
 					<section>
 						<h3>NVIDIA: Code 43</h3>
@@ -360,17 +352,18 @@
 							</tr>
 						</table>
 						<p>&nbsp;</p>
-						<p class="fragment roll-in" data-fragment-index="2"><small><sup>*</sup>QEMU now enables this independent of x-vga</small></p>
+						<p class="fragment roll-in" data-fragment-index="2"><small><sup>*</sup>QEMU now enables this independent of x-vga (2.2)</small></p>
 						</div>
 					</section>
 					<section>
-						<h3>Outstanding issues</h3>
+						<h3>Unresolved Issues</h3>
 						<ul>
 							<div class="fragment">
 							<li>Radeon device resets</li>
 							<ul>
 								<li>Sea Island GPUs don't reset correctly</li>
-								<li>Southern Island GPUs indicate PM reset capability</li>
+									<ul><li class="fragment">SMC firmware issue?</li></ul>
+								<li class="fragment">Southern Island GPUs indicate PM reset capability</li>
 									<ul><li class="fragment">doesn't work</li></ul>
 							</ul>
 							</div>
@@ -382,6 +375,7 @@
 							</ul>
 							</div>
 
+<!-- meh
 							<div class="fragment">
 							<li>GeForce audio glitches</li>
 							<ul>
@@ -390,8 +384,12 @@
 									<ul><li class="fragment">try to use MSI if affected</li></ul>
 							</ul>
 							</div>
+-->
 
 							<li class="fragment">Intel Graphics support</li>
+							<ul class="fragment">
+								<li>In progress?  KvmGT?
+							</ul>
 
 							<li class="fragment">Host/Guest suspend</li>
 							<ul>
