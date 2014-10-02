@@ -32,6 +32,8 @@
 			}
 		</script>
 
+		<link rel="import" href="init.html">
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -729,6 +731,8 @@ function linkify( selector ) {
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
+		<div id="initializer">
+
 		<script>
 
 			// Full list of configuration options available here:
@@ -768,5 +772,19 @@ function linkify( selector ) {
 
 		</script>
 
+		</div>
+
+		<script>
+			var link = document.querySelector('link[rel="import"]');
+			var content = link.import;
+ 
+			var template = link.import.querySelector('template');
+			var clone = document.importNode(template.content, true);
+ 
+			if (clone) {
+				document.querySelector('#initializer').innerHTML = '';
+				document.querySelector('#initializer').appendChild(clone);
+			}
+		</script>
 	</body>
 </html>
