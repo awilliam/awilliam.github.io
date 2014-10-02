@@ -298,17 +298,17 @@
 					<section>
 						<h3>NVIDIA: Code 43</h3>
 						<p class="fragment" data-fragment-index="1">Driver detects KVM hypervisor, fails to initialize<sup>*</sup></p>
-						<p class="fragment">Nvidia - "Accidental" breakage, won't fix, unsupported</p>
-						<p class="fragment">We can't solve it, but we can work around it</p>
-						<p class="fragment">Hide the hypervisor</p>
+						<p class="fragment" data-fragment-index="2">Nvidia - "Accidental" breakage, won't fix, unsupported</p>
+						<p class="fragment" data-fragment-index="3">We can't solve it, but we can work around it</p>
+						<p class="fragment" data-fragment-index="4">Hide the hypervisor</p>
 						<div class="side-by-side">
-						<div class="side fragment">
+						<div class="side fragment" data-fragment-index="5">
 							<p>via command line:</p>
 							<pre><code>
     -cpu [type],kvm=off
 							</pre></code>
 						</div>
-						<div class="side fragment">
+						<div class="side fragment" data-fragment-index="6">
 							<p>via libvirt:</p>
 							<pre><code>
     &lt;domain type='kvm'&gt;
