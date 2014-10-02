@@ -49,7 +49,7 @@
 					<h3>Handling device identity mappings</h3>
 					<h3>in the IOMMU API</h3>
 					<p><small>AKA: Please stop abusing RMRRs</small></p>
-					<p>Alex Williamson / alex.williamson@redhat.com</p>
+					<p>Alex Williamson / <font color=#cc0000>alex.williamson@redhat.com</font></p>
 				</section>
 
 				<section>
@@ -67,77 +67,118 @@
 				<section>
 					<h3>The spec says...</h3>
 					<blockquote style="width:120%;margin-left:-10%" align="justify">
-						&ldquo;The RMRR regions are expected to be used for legacy usages (such as USB, UMA Graphics, etc.) requiring reserved memory. <b>Platform designers should avoid or limit use of reserved memory regions since these require system software to create holes in the DMA virtual address range available to system software and its drivers.</b>&rdquo;
+						&ldquo;The RMRR regions are expected to be used for legacy usages (such as USB, UMA Graphics, etc.) requiring reserved memory. <font color=#cc0000><b>Platform designers should avoid or limit use of reserved memory regions since these require system software to create holes in the DMA virtual address range available to system software and its drivers.</font></b>&rdquo;
 					</blockquote>
 					<p><small>VT-d spec, rev 2.2, section 8.4</small></p>
 
 				</section>
 
 				<section>
-					<h3>Vendor response...</h3>
 					<div style="width:124%; margin-left:-12%">
+					<h3>Platform designers...</h3>
 					<pre><code>
 IOMMU: Setting RMRR:
 IOMMU: Setting identity map for device 0000:02:00.0 [0xbdf7f000 - 0xbdf8efff] (Smart Array)
 IOMMU: Setting identity map for device 0000:01:00.0 [0xbdf7f000 - 0xbdf8efff] (iLO)
 IOMMU: Setting identity map for device 0000:01:00.2 [0xbdf7f000 - 0xbdf8efff] (iLO)
-IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf7f000 - 0xbdf8efff] (BCM57810)
-IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf7f000 - 0xbdf8efff] (BCM57810)
+IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf7f000 - 0xbdf8efff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf7f000 - 0xbdf8efff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.2 [0xbdf7f000 - 0xbdf8efff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.3 [0xbdf7f000 - 0xbdf8efff] (BCM5719)
 IOMMU: Setting identity map for device 0000:02:00.0 [0xbdf8f000 - 0xbdf92fff] (Smart Array)
 IOMMU: Setting identity map for device 0000:01:00.0 [0xbdf8f000 - 0xbdf92fff] (iLO)
 IOMMU: Setting identity map for device 0000:01:00.2 [0xbdf8f000 - 0xbdf92fff] (iLO)
-IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf8f000 - 0xbdf92fff] (BCM57810)
-IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf8f000 - 0xbdf92fff] (BCM57810)
+IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf8f000 - 0xbdf92fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf8f000 - 0xbdf92fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.2 [0xbdf8f000 - 0xbdf92fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.3 [0xbdf8f000 - 0xbdf92fff] (BCM5719)
 IOMMU: Setting identity map for device 0000:02:00.0 [0xbdf93000 - 0xbdf94fff] (Smart Array)
 IOMMU: Setting identity map for device 0000:01:00.0 [0xbdf93000 - 0xbdf94fff] (iLO)
 IOMMU: Setting identity map for device 0000:01:00.2 [0xbdf93000 - 0xbdf94fff] (iLO)
-IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf93000 - 0xbdf94fff] (BCM57810)
-IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf93000 - 0xbdf94fff] (BCM57810)
+IOMMU: Setting identity map for device 0000:03:00.0 [0xbdf93000 - 0xbdf94fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.1 [0xbdf93000 - 0xbdf94fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.2 [0xbdf93000 - 0xbdf94fff] (BCM5719)
+IOMMU: Setting identity map for device 0000:03:00.3 [0xbdf93000 - 0xbdf94fff] (BCM5719)
 IOMMU: Setting identity map for device 0000:01:00.0 [0xbdff6000 - 0xbdffcfff] (iLO)
 IOMMU: Setting identity map for device 0000:01:00.2 [0xbdff6000 - 0xbdffcfff] (iLO)
 IOMMU: Setting identity map for device 0000:01:00.4 [0xbdff6000 - 0xbdffcfff] (iLO USB)
-IOMMU: Setting identity map for device 0000:00:1d.0 [0xbdffd000 - 0xbdffffff] (EHCI)
-IOMMU: Setting identity map for device 0000:00:1a.0 [0xbdffd000 - 0xbdffffff] (EHCI)
+IOMMU: Setting identity map for device 0000:00:1d.0 [0xbdffd000 - 0xbdffffff] (USB)
+IOMMU: Setting identity map for device 0000:00:1a.0 [0xbdffd000 - 0xbdffffff] (USB)
 					</code></pre>
+					<p><small>HP ProLiant DL360p Gen8</small></p>
 					</div>
-					<p><small>HP DL560 Gen8</small></p>
 				</section>
 
 				<section>
 					<h3>Why is this a problem?</h3>
-					<div align="left">
-					<p class="fragment">dma_ops</p>
 					<ul>
-						<li class="fragment">IOMMU driver defines device IOVA space</li>
-						<li class="fragment">RMRRs are handled properly (mostly)</li>
+					<div class="fragment">
+					<li>dma_ops</li>
+					<ul>
+						<li>IOMMU driver defines device IOVA space</li>
+						<li>RMRRs are handled properly (mostly)</li>
 					</ul>
-					<p>&nbsp;</p>
-					<p class="fragment">IOMMU API</p>
+					</div>
+					<div class="fragment">
+					<li>IOMMU API</li>
 					<ul>
-						<li class="fragment">API user defines device IOVA space</li>
-						<li class="fragment">RMRRs are ignored</li>
+						<li>API user defines device IOVA space</li>
+						<li>RMRRs are ignored</li>
 						<ul>
-							<li class="fragment">device may continue to write to RMRR area</li>
-								<ul><li class="fragment">may result in IOMMU faults</li></ul>
-							<li class="fragment">RMRR IOVA may be remapped</li>
-								<ul><li class="fragment">potentially worse failure modes</li></ul>
+							<li>device may continue to write to RMRR area</li>
+								<ul><li>may result in IOMMU faults</li></ul>
+							<li>RMRR IOVA may be remapped</li>
+								<ul><li>potentially worse failure modes</li></ul>
+						</ul>
+					</ul>
+					</div>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Current solution:</h3>
+					<p>&nbsp;</p>
+					<p>Exclude devices with RMRRs from the IOMMU API</p>
+				</section>
+
+				<section>
+					<h3>Support requirements</h3>
+					<ul>
+					<div class="fragment">
+					<li>IOMMU API</li>
+					<ul>
+						<li>Retain RMRR mappings</li>
+						<li>Expose RMRR mappings</li>
+						<ul>
+							<li>How to handle existing domain mappings?</li>
+						</ul>
+					</ul>
+					</div>
+					<div class="fragment">
+					<li>IOMMU Groups</li>
+					<ul>
+						<li>Group devices that share an RMRR area?!</li>
+						<ul>
+							<li>All linked to management controller?</li>
+						</ul>
+					</ul>
+					</div>
+					<div class="fragment">
+					<li>IOMMU API users - VMs</li>
+					<ul>
+						<li>Reserve RMRR region in VM address space</li>
+						<ul>
+							<li>No hotplug for RMRR devices</li>
+							<li>What can a guest exploit through an RMRR?</li>
 						</ul>
 					</ul>
 					</div>
 				</section>
 
 				<section>
-					<h3>Current solution:</h3>
+					<h3>Should we try to support it?</h3>
 					<p>&nbsp;</p>
-					<p class="fragment">Exclude devices with RMRRs from the IOMMU API</p>
-				</section>
-
-				<section>
-					<h3>Do we want to do better?</h3>
-					<p>&nbsp;</p>
-					<h3 class="fragment">How?</h3>
-					<p>&nbsp;</p>
-					<h3 class="fragment">Discuss...</h3>
+					<h3>Discuss...</h3>
 				</section>
 			</div>
 
