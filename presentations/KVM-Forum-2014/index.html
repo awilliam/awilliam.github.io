@@ -746,6 +746,12 @@ function linkify( selector ) {
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				// parallaxBackgroundSize: '2100px 900px',
 
+				multiplex: {
+					secret: null, // Obtained from the socket.io server. Gives this (the master) control of the presentation
+					id: '1bb436c54078a613', // Obtained from socket.io server
+					url: 'revealjs.jit.su:80' // Location of socket.io server
+				},
+
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -754,6 +760,9 @@ function linkify( selector ) {
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+					// { src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/multiplex/client.js', async: true }
 				]
 			});
 
