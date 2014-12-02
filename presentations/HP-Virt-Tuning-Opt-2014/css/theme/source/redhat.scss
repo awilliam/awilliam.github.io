@@ -1,0 +1,83 @@
+/**
+ * redhat theme for reveal.js.
+ *
+ * Based on sky theme
+ *    Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import "../../../fonts/overpass.css";
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Overpass',Overpass,Helvetica,helvetica,arial,sans-serif;
+
+$mainColor: #60605b;
+$headingFont: 'Overpass',Overpass,Helvetica,helvetica,arial,sans-serif;
+$headingColor: #60605b;
+$headingLetterSpacing: -0.01em;
+$headingTextShadow: none;
+$backgroundColor: #ffffff;
+$linkColor: #781f1c;
+$linkColorHover: lighten( $linkColor, 20% );
+//$selectionBackgroundColor: #134674;
+$headingTextTransform: none;
+
+// Fix links so they are not cut off
+.reveal a:not(.image) {
+	line-height: 1.3em;
+}
+
+#logo-white {
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.5s ease-out;
+	bottom: 3%;
+	left: 3%;
+	z-index: 1; }
+
+#logo-white img {
+	width: 5em; }
+
+#logo-black {
+	position: absolute;
+	opacity: 1;
+	transition: opacity 0.5s ease-out;
+	bottom: 3%;
+	left: 3%;
+	z-index: 1; }
+
+#logo-black img {
+	width: 5em; }
+
+.logo-light {
+	#logo-white {
+		opacity: 1; }
+	#logo-black {
+		opacity: 0; }}
+
+.logo-none #logo-black {
+	opacity: 0; }
+
+.side-by-side {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  box-sizing: border-box; }
+  .side-by-side .side {
+    -webkit-flex: 1 0 0;
+    -moz-flex: 1 0 0;
+    flex: 1 0 0; }
+  .side-by-side .side.fix-w3c {
+    display: flex; }
+  .side-by-side .side + .side {
+    margin-left: 2rem; }
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
