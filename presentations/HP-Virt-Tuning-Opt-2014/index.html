@@ -49,6 +49,326 @@
 					<h3>Virtualization Tuning &amp; Optimization</h3>
 					<p>Alex Williamson / <font color=#cc0000>alex.williamson@redhat.com</font></p>
 				</section>
+				<section>
+					<p>Everything I'm about to tell you is already online:</p>
+					<p><small><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide</a></small></p>
+				<div class=fragment>
+					<p>&nbsp;</p>
+					<p>So is this talk:</p>
+					<p><small><a href="http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014">http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014</a></small></p>
+
+				</div>
+				</section>
+				<section>
+					<section>
+						<h2>Device Types</h2>
+					</section>
+					<section>
+						<h3>Emulated Devices</h3>
+						<ul>
+							<li>I/O faults trap to QEMU</li>
+							<li>Emulated device register set</li>
+							<li>Examples: rtl8139, e1000, piix4-ide, lsi53c895a, ich9-ahci</li>
+							<div class="fragment">
+							<li>Pros:</li>
+							<ul>
+								<li>Out-of-the-box compatibility</li>
+								<li>Migration compatibility</li>
+								<li>Shares backing devices</li>
+							</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+							<ul>
+								<li>Poor performance</li>
+								<li>High overhead</li>
+							</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Paravirtual Devices</h3>
+						<ul>
+							<li>Virtual device, designed for virtual machines</li>
+							<li>No extraneous register set emulation</li>
+							<li>I/O faults often handled in the host kernel (vhost)</li>
+							<li>Examples: virtio-net-pci, virtio-blk-pci, virtio-scsi-pci</li>
+							<div class="fragment">
+							<li>Pros:</li>
+							<ul>
+								<li>Out-of-the-box compatibility (Linux-only)</li>
+								<li>Migration compatibility</li>
+								<li>Good performance</li>
+								<li>Low overhead</li>
+								<li>Shares backing devices</li>
+							</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+							<ul>
+								<li>Lacks out-of-the-box compatibility (non-Linux)</li>
+							</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Assigned Devices</h3>
+						<ul>
+							<li>Direct use of physical I/O device by guest VM</li>
+							<li>Mostly eliminates hypervisor from I/O path</li>
+							<li>Examples: vfio-pci (RHEL7), pci-assign (RHEL6)</li>
+							<div class="fragment">
+							<li>Pros:</li>
+							<ul>
+								<li>Best performance</li>
+								<li>Lowest overhead</li>
+								<li>Device compatibility and breadth (ex. GPUs)</li>
+							</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+							<ul>
+								<li>Incompatible with migration (use bonding/multipath)</li>
+								<li>Requires host IOMMU support</li>
+								<li>Exclusive device access</li>
+							</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Summary</h3>
+						<ul>
+							<li>Emulated devices</li>
+							<ul>
+								<li>Use only for bootstrap or low performance applications</li>
+							</ul>
+							<li>Paravirtualized devices</li>
+							<ul>
+								<li>Use wherever possible</li>
+							</ul>
+							<li>Assigned devices</li>
+							<ul>
+								<li>Use where absolute performance is required</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Disk Types</h2>
+					</section>
+					<section>
+						<h3>QCOW2</h3>
+						<ul>
+							<li>QEMU Copy-On-Write image format</li>
+							<li>Disk blocks allocated as used</li>
+							<li>Host file image or shared storage based</li>
+							<li>Created with qemu-img (or other virt tools)</li>
+							<div class="fragment">
+							<li>Pros:</li>
+								<ul>
+									<li>Space efficient</li>
+									<li>Supports live snapshots</li>
+									<li>Supports base images</li>
+									<li>Supports live storage migration</li>
+								</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+								<ul>
+									<li>Performance</li>
+									<li>Space overhead when full</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>RAW</h3>
+						<ul>
+							<li>Simple empty file container </li>
+							<li>May be sparse</li>
+							<li>Host file image or shared storage based</li>
+							<li>Created with qemu-img or dd (or other virt tools)</li>
+							<div class="fragment">
+							<li>Pros:</li>
+								<ul>
+									<li>No block management overhead</li>
+									<li>Space efficient if sparse</li>
+									<li>Performance (for allocated blocks)</li>
+									<li>Supports live storage migration</li>
+								</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+								<ul>
+									<li>Some overhead on block allocation when sparse</li>
+									<li>Manual offline snapshots</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Block devices</h3>
+						<ul>
+							<li>Local disk partition, LVM Volume, {i}SCSI LUN, Fibre Channel, etc.</li>
+							<li>Flexibility of allocation depends on type</li>
+							<div class="fragment">
+							<li>Pros:</li>
+								<ul>
+									<li>Performance</li>
+									<li>Offline snapshots (LVM snapshots or manual)</li>
+								</ul>
+							</div>
+							<div class="fragment">
+							<li>Cons:</li>
+								<ul>
+									<li>No sparse allocation</li>
+									<li>Shared storage <b>required</b> for migration</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Summary</h3>
+						<ul>
+							<li>QCOW2 images</li>
+							<ul>
+								<li>Use where live snapshotting, space efficiency, and live storage migration are needed</li>
+							</ul>
+							<li>RAW images</li>
+							<ul>
+								<li>Use where performance is favored over live snapshotting</li>
+							</ul>
+							<li>Block devices</li>
+							<ul>
+								<li>Use for best performance where migration is not required or shared storage is available</li>
+							</ul>
+						</ul>
+						<p>&nbsp;</p>
+						<p>Note: QCOW2 &amp; RAW images can also use shared storage for reduced migration overhead</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>VM Tuning</h2>
+					</section>
+					<section>
+						<h3>Remove Unused Devices</h3>
+						<ul>
+							<li>Unused devices are overhead</li>
+							<li>Emulation is active even if little traffic over device</li>
+							<li>Can affect overall VM performance</li>
+							<li>Use virt-manager or edit domain XML to remove</li>
+						</ul>
+					</section>
+					<section>
+						<h3>CPU Tuning</h3>
+						<ul>
+							<li>Do not overcommit CPUs</li>
+							<li>For best performance, size VM to fit within NUMA node</li>
+							<li>Copy host CPU configuration</li>
+							<ul>
+								<li>Note: Live migration requires compatible physical CPUs</li>
+							</ul>
+							<li>Set CPU topology</li>
+							<ul>
+								<li>One socket per vCPU is generally best</li>
+								<li>Use multi-core sockets if necessary for licensing</li>
+								<li>Only use threads with vCPU pinning</li>
+							</ul>
+							<li>Pin vCPUs to pCPUs for optimal performance</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Memory Tuning</h3>
+						<ul>
+							<li>Do not overcommit or over-size VM beyond what it needs</li>
+							<li>For best performance, size VM to fit within NUMA node</li>
+							<li>Huge pages</li>
+							<ul>
+								<li>CPUs support 4KB, 2MB, and sometimes 1GB page sizes</li>
+								<li>Using large pages reduces VM memory overhead</li>
+								<li>RHEL7 supports Transparent Huge Pages (THP) (default)</li>
+								<li>Static huge pages can be used for:</li>
+								<ul>
+									<li>Consitent huge page performance</li>
+									<li>Huge pages with device assignment</li>
+								</ul>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h3>Network Tuning</h3>
+						<a class="image" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">
+						<img style="border:none; background:none; box-shadow:none;" src="./images/virtio_vhostnet.png" alt="virtio vs vhost">
+						</a>
+						<p>virtio vs vhost</p>
+					</section>
+					<section>
+						<h3>Network Tuning</h3>
+						<a class="image" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">
+						<img style="border:none; background:none; box-shadow:none;" src="./images/devassign_sriov.png" alt="assignment vs assignment with sriov">
+						</a>
+						<p>SR-IOV Device Assignment</p>
+					</section>
+					<section>
+						<h3>Network Tuning</h3>
+						<ul>
+							<li>Pick the appropriate device model for your requirements</li>
+							<li>Bridge tuning</li>
+							<ul>
+								<li>Enable expiermental zero-copy transmit</li>
+								<li>/etc/modprobe.d:</li>
+							</ul>
+								<div style="width:70%">
+<pre><code> options vhost_net experimental_zcopytx=1 </code></pre>
+								</div>
+							<li>Multi-queue virtio-net</li>
+								<div style="width:70%">
+<pre><code>    &lt;interface type='network'&gt;
+          &lt;source network='default'/&gt;
+          &lt;model type='virtio'/&gt;
+          &lt;driver name='vhost' queues='N'/&gt;
+    &lt;interface&gt; </code></pre>
+								</div>
+								<div style="width:70%">
+<pre><code> # ethtool -L eth0 combined M </code></pre>
+								</div>
+						</ul>
+					</section>
+					<section>
+						<h3>Block Tuning</h3>
+						<ul>
+							<li>Caching mode</li>
+							<ul>
+								<li>none: no host caching, supports migration</li>
+								<li>writethrough: host caching, writes to media</li>
+								<li>writeback: host caching</li>
+							</ul>
+								<div style="width:100%">
+<pre><code>    &lt;disk type='file' device='disk'&gt;
+      &lt;driver name='qemu' type='raw' cache='writeback'/&gt;</code></pre>
+								</div>
+							<li>Multi-queue virtio-scsi</li>
+								<div style="width:100%">
+<pre><code>    &lt;controller type='scsi' index='0' model='virtio-scsi'&gt;
+      &lt;driver queues='N'/&gt;
+    &lt;controller&gt;
+</code></pre>
+								</div>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h3>For more, google:</h3>
+					<h3>"Virtualization Tuning and Optimization Guide"</h3>
+					<p><small>Note RHEL7 vs RHEL6 versions</small></p>
+				</section>
+				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
+					<div style="margin-top:40%">
+						<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
+					</div>
+				</section>
 			</div>
 
 		</div>
