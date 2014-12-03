@@ -320,18 +320,18 @@
 								<li>Enable expiermental zero-copy transmit</li>
 								<li>/etc/modprobe.d:</li>
 							</ul>
-								<div style="width:70%">
+								<div style="width:70%; margin-left:15%">
 <pre><code> options vhost_net experimental_zcopytx=1 </code></pre>
 								</div>
 							<li>Multi-queue virtio-net</li>
-								<div style="width:70%">
+								<div style="width:70%; margin-left:15%">
 <pre><code>    &lt;interface type='network'&gt;
           &lt;source network='default'/&gt;
           &lt;model type='virtio'/&gt;
           &lt;driver name='vhost' queues='N'/&gt;
     &lt;interface&gt; </code></pre>
 								</div>
-								<div style="width:70%">
+								<div style="width:70%; margin-left:15%">
 <pre><code> # ethtool -L eth0 combined M </code></pre>
 								</div>
 						</ul>
