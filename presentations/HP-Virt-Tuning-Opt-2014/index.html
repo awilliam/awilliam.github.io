@@ -186,7 +186,7 @@
 						<h3>RAW</h3>
 						<ul>
 							<li>Simple empty file container </li>
-							<li>May be sparse</li>
+							<li>May be sparse (depends on host filesystem support)</li>
 							<li>Host file image or shared storage based</li>
 							<li>Created with qemu-img or dd (or other virt tools)</li>
 							<div class="fragment">
@@ -202,7 +202,8 @@
 							<li>Cons:</li>
 								<ul>
 									<li>Some overhead on block allocation when sparse</li>
-									<li>Manual offline snapshots</li>
+									<li>Manual offline snapshots or base for qcow2 snapshot</li>
+									<li>Tricky sparse file handling</li>
 								</ul>
 							</div>
 						</ul>
@@ -245,7 +246,15 @@
 							</ul>
 						</ul>
 						<p>&nbsp;</p>
-						<p>Note: QCOW2 &amp; RAW images can also use shared storage for reduced migration overhead</p>
+						<div align="left" style="margin-bottom:0; margin-top:0">
+						<p><small><br>
+						Notes:
+						<ul>
+							<li>QCOW2 &amp; RAW images can also use shared storage for reduced migration overhead</li>
+							<li>Conversion tools exist for QCOW2, RAW, and other hypervisor formats</li>
+						</ul>
+						</small></p>
+						</div>
 					</section>
 				</section>
 				<section>
