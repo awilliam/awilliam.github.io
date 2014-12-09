@@ -414,6 +414,28 @@
 						</ul>
 					</section>
 					<section>
+						<h3>GPU Assignment Tips</h3>
+						<ul>
+							<li>Assigned GPU must not be primary graphics on the host</li>
+							<li>Avoid host drivers (nouveau or nvidia)</li>
+							<ul>
+								<li>Use pci-stub.ids=10de:xxxx,10de:yyyy (GPU,audio)</li>
+							</ul>
+							<li>Avoid distro drivers in the guest</li>
+							<ul>
+								<li>Use nouveau.modeset=0 or rdblacklist=nouveau</li>
+							</ul>
+							<li>NVIDIA audio functions have broken INTx masking</li>
+							<ul>
+								<li>Leave audio function unassigned to guest</li>
+								<li>Unsupported for assignment</li>
+								<ul>
+									<li><a href="http://vfio.blogspot.com/2014/09/vfio-interrupts-and-how-to-coax-windows.html">But typically works if forced to use MSI</a></li>
+								<ul>
+							</ul>
+						</ul>
+					</section>
+					<section>
 						<h3>GPU Future</h3>
 						<ul>
 							<li>Virgil 3D</li>
