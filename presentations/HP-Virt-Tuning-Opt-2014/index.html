@@ -50,14 +50,15 @@
 					<p>Alex Williamson / <font color=#cc0000>alex.williamson@redhat.com</font></p>
 				</section>
 				<section>
-					<p>Everything I'm about to tell you is already online:</p>
-					<p><small><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide</a></small></p>
-				<div class=fragment>
-					<p>&nbsp;</p>
-					<p>So is this talk:</p>
-					<p><small><a href="http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014">http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014</a></small></p>
-
-				</div>
+						<h2>Agenda</h2>
+						<div align=left>
+						<ul>
+							<li>Device types</li>
+							<li>Disk types</li>
+							<li>Tuning</li>
+							<li>Graphics</li>
+						</ul>
+						</div>
 				</section>
 				<section>
 					<section>
@@ -367,11 +368,68 @@
 								</div>
 						</ul>
 					</section>
+					<section>
+						<h3>For more, google:</h3>
+						<h3>"Virtualization Tuning and Optimization Guide"</h3>
+						<p><small>Note RHEL7 vs RHEL6 versions</small></p>
+						<p><small><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide</a></small></p>
+					</section>
 				</section>
 				<section>
-					<h3>For more, google:</h3>
-					<h3>"Virtualization Tuning and Optimization Guide"</h3>
-					<p><small>Note RHEL7 vs RHEL6 versions</small></p>
+					<section>
+						<h2>VM Graphics</h2>
+					</section>
+					<section>
+						<h3>Emulated</h3>
+						<ul>
+							<li>VNC, QXL/Spice</li>
+							<ul>
+								<li>Host-based</li>
+								<li>2D only</li>
+								<li>Spice Features:</li>
+								<ul>
+									<li>Audio transport</li>
+									<li>Encryption</li>
+									<li>Video detection</li>
+									<li>etc</li>
+
+								</ul>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h3>GPU Assignment</h3>
+						<ul>
+							<li>Supported only with specific cards:</li>
+							<ul>
+								<li>NVIDIA: K-series Quadro/GRID/Tesla</li>
+							</ul>
+							<li>Secondary GPU configuration</li>
+							<ul>
+								<li>Emulated graphics used for pre-boot, boot, and installation</li>
+								<li>Assigned GPU only activated by guest GPU drivers</li>
+							</ul>
+							<li>Supports Windows and Linux guests</li>
+							<li>Supports multiple GPUs per guest</li>
+							<li>GPUs owned exclusively by guests</li>
+							<li>No in-band or out-of-band remoting provided by Red Hat</li>
+						</ul>
+					</section>
+					<section>
+						<h3>GPU Future</h3>
+						<ul>
+							<li>Virgil 3D</li>
+							<li>KvmGT</li>
+							<li>NVIDIA vGPU</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+						<h2>Resources</h2>
+						<ul>
+							<li>This talk:<br><small><a href="http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014">http://awilliam.github.io/presentations/HP-Virt-Tuning-Opt-2014</a></small></li>
+							<li>Red Hat Virtualization Tuning and Optimization Guide:<br><small><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/Virtualization_Tuning_and_Optimization_Guide</a></small></li>
+						</ul>
 				</section>
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
 					<div style="margin-top:40%">
