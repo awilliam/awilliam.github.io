@@ -1,2 +1,2 @@
-# User-agent: *
-# Disallow: /presentations/foo/
+User-agent: *
+Disallow: /presentations/KVM-Forum-2016/
