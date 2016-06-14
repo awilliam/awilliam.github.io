@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="1200" viewBox="0 0 1200 1200" version="1.1" id="svg8">
+
+  <rect y="-42.2" x="-389.55" height="1284.4" width="1979.1" style="fill:#015365"></rect>
+  <path d="M 895.75,0 H 2095.7 L 895.75,1200 H -304.23 Z" id="rect5549" style="opacity:0.065"></path>
+  <use x="0" y="0" xlink:href="#rect5549" id="use5564" transform="translate(-1458)"></use>
+
+  <use transform="translate(-1785.4)" id="use4915" xlink:href="#rect5549" y="0" x="0"></use>
+</svg>
