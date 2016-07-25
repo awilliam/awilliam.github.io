@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="447.90793"
+   height="522.87897"
+   viewBox="0 0 447.90793 522.87898"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="vfio-memoryregions.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5715"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6468"
+       id="linearGradient6517"
+       gradientUnits="userSpaceOnUse"
+       x1="664.68042"
+       y1="622.03717"
+       x2="659.62964"
+       y2="706.89001" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6468">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop6470" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop6472" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6468"
+       id="linearGradient6476"
+       gradientUnits="userSpaceOnUse"
+       x1="560.31738"
+       y1="-522.2489"
+       x2="561.42804"
+       y2="-689.9342" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5715-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-04"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5715-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5715-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5715-34"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="206.95046"
+     inkscape:cy="188.39023"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer7"
+     showgrid="false"
+     showborder="false"
+     units="px"
+     objecttolerance="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="base"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-307.57143,-452.36218)">
+    <g
+       transform="matrix(0.58101337,0,0,0.58101337,295.38153,562.20503)"
+       id="g6654"
+       inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-126.53478"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786978;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-186.54124"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-246.54778"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-306.55426"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-8"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-366.56079"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-0.90884742,1.1002947,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text5266-2"
+         y="369.25671"
+         x="-690.62506"
+         style="font-style:normal;font-weight:normal;font-size:36.35783386px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36.35783386px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="369.25671"
+           x="-690.62506"
+           id="tspan5268-3"
+           sodipodi:role="line">Region 3</tspan></text>
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-75.091904"
+         x="411.00674"
+         height="7.9934249"
+         width="299.72125"
+         id="rect5175-6-7"
+         style="opacity:1;fill:#ff0000;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.27875096;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-159.23363"
+         x="411.13333"
+         height="31.975306"
+         width="299.46808"
+         id="rect5175-6-7-9"
+         style="opacity:1;fill:#00ff00;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.55728042;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-259.36151"
+         x="411.03659"
+         height="12.207323"
+         width="299.66156"
+         id="rect5175-6-7-4"
+         style="opacity:1;fill:#0000ff;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.34444261;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-426.56726"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4-0-9"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-486.57376"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4-0-9-5"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-546.58026"
+         x="411.22446"
+         height="59.172619"
+         width="299.2858"
+         id="rect5175-6-4-0-9-5-2"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.75786972;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-371.98743"
+         x="410.87381"
+         height="4.9434533"
+         width="19.943453"
+         id="rect5175-6-7-49"
+         style="opacity:1;fill:#ff00ff;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.05654661;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-431.93381"
+         x="410.93393"
+         height="4.8232002"
+         width="199.8232"
+         id="rect5175-6-7-49-7"
+         style="opacity:1;fill:#ff8000;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.1767998;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-491.97244"
+         x="410.90179"
+         height="4.8874688"
+         width="79.887466"
+         id="rect5175-6-7-49-3"
+         style="opacity:1;fill:#ffff00;fill-opacity:0.29295774;stroke:#000000;stroke-width:0.11253109;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-606.58008"
+         x="411.24649"
+         height="59.241745"
+         width="299.24173"
+         id="rect5175-6-4-0-9-5-2-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient6517);stroke-width:0.75825649;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-666.58008"
+         x="411.24649"
+         height="59.241745"
+         width="299.24173"
+         id="rect5175-6-4-0-9-5-2-7-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient6476);stroke-width:0.75825649;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         sodipodi:linespacing="125%"
+         id="text6323"
+         y="563.34784"
+         x="617.88696"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="563.34784"
+           x="617.88696"
+           id="tspan6325"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513"
+         y="104.70482"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="104.70482"
+           x="-621.59247"
+           id="tspan6515"
+           sodipodi:role="line">Region 0</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-3"
+         y="164.71129"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="164.71129"
+           x="-621.59247"
+           id="tspan6515-7"
+           sodipodi:role="line">Region 1</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8"
+         y="224.71782"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="224.71782"
+           x="-621.59247"
+           id="tspan6515-6"
+           sodipodi:role="line">Region 2</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-8"
+         y="284.7243"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="284.7243"
+           x="-621.59247"
+           id="tspan6515-6-7"
+           sodipodi:role="line">Region 3</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-2"
+         y="344.73083"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="344.73083"
+           x="-621.59247"
+           id="tspan6515-6-9"
+           sodipodi:role="line">Region 4</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-0"
+         y="404.7373"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="404.7373"
+           x="-621.59247"
+           id="tspan6515-6-4"
+           sodipodi:role="line">Region 5</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-29"
+         y="464.7438"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="464.7438"
+           x="-621.59247"
+           id="tspan6515-6-43"
+           sodipodi:role="line">Region 6</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-3"
+         y="524.75031"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="524.75031"
+           x="-621.59247"
+           id="tspan6515-6-5"
+           sodipodi:role="line">Region 7</tspan></text>
+      <text
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/net/gimli/home/alwillia/Work/awilliam.github.io/presentations/KVM-Forum-2016/images/vfio-file-fd.png"
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text6513-8-09"
+         y="584.71558"
+         x="-621.59247"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="584.71558"
+           x="-621.59247"
+           id="tspan6515-6-0"
+           sodipodi:role="line">Region 8</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 389.28571,795.93361 727.14286,730.21932"
+       id="path5588"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 368.57143,795.93361 -57.14286,-67.14286 2.14286,2.85714"
+       id="path5590"
+       inkscape:connector-curvature="0" />
+    <image
+       y="764.14795"
+       x="341.78574"
+       id="image5577"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
+BmJLR0QA/wD/AP+gvaeTAAAmgElEQVR42u2dCXhU1dnHA+4imTsBivvSarX9+mnVWpdqpfppP7G2
+VZuvZGaCLIoLosjuChVERGWHEEhmJhuEhH0PWQkJIZB9Ifu+72GTTft+51xiRZlz5yaZLHfm/3+e
+35MEQsjc877/Oee9577HzQ1ymCxjhl0f4OXxqNmk9zIb9e9bDNISi0kKthh1e6wG6YjFKJUwahkt
+VqN0gn08x/g3/9jxdUvH3/PvS7EY9Xv5vzcbpaUWk/4D9rXBbPJ4LMg09AZycxuAKw5BkF0FjB5y
+k8WgH2kx6GYyMwph5pLF+IZBvYfuNDO5bKtRt46bo9Wkf948yuMWjA4EubDCPN0usxp0D7IZ0jts
+lhPGzKKmd42p09QyIwtnHydbjO4PzRnhdjlGEYKcWHymwkxqAluKbWaJf6yfG5QiHUvNrWw5+Yaf
+QboNowtBTiA/k/udzKD+xZI7R8sGZQ+zUXeUMc/fNPhujDoEaUghBp3ebNC/aTHqkpzZpBRIthr1
+EwNGDx6CaICgfijfCW5XmA3S31iybmKc7TEzMOnJf/zt5P/WvbT2vcfJd9bz5Dvbi1bPG0urP3+d
+fL6YSD5fvUerFk2TP/Kv+Z/zv/edY5C/f+2UJ8hv4n1kfvUO+ef1oHGdk5eNBumlME+3KxElENTH
+shjc77IapOVWo9TkyGTnprR22lO0+rPxtGr5J7TCvJKWhW+kJbsTaElEsuPYfYCWh2+iFZZV7P+Z
+Tb7zX6W1058m8/g7HG1eLVaTbpXFa8g9iBoI6m2jMur/22LSrWeJ+F33Z00e5PfOw/JMiBvH0m0R
+zEwO9znLtu2jFVYf8lnwJvlNfoQs3kMcYVzf8buN/ibpPkQRBPWw/L11v7twd0zemNn1Zd3b95Mv
+W6at8ltKS3fE0lJmEP2dZbv200rzCvJlsz6/SQ86Yjm502L0eARRBUGONiov/eNsVhXR5btor1xP
+az75B61a8yUt276Plu473CWWXPz5f2ZDybT4Eg53cOHri7/vP/+u42fIhtSF32XZjihatfZrWjP7
+n+z13dAd44qymKQRiDII6u7Sz6R/giXU/q4logetnfYn8vGZT8t3x9MynuSqSaZlET98vjTiew5f
+9Lmj6ZhJRSRfoBO/7/LdCbRq9RfkN+N/5CVuF40rIcAg/QlRB0Gd1FqvQcOtRimoSwXziffS6kVT
+acW2vbQ88kinWBaZQis6+W96kq78LivYDNJ3yQzyn/RAF41LH+o/auiNiEIIsiP+yAxLmkmM9k4l
+2ehhtHauN60KDelcgkcxg4o6QitlUjTBio7fWY2ZrdywgXw/G8uuz/DOGtdxs0F6D48AQZBo+Wf0
+eMRsktI6lVhjbqA1n79GK9msYkXHjESJlZEXkt4nJpV8ojVOTAqtYh9XRql43Tsiac0Xb5B5zI2d
+vEEhZfL6IaITgjrEd2RbDdLaztz5M4+9mdYsfJtW7ortmHGI4Qa1KvqCSfnGpJFvrHPiE53GXmuq
+8rXYHUe+X08m87hbO2NcfFysZs/rhiFaIZcW7zHFkqFZtVGNv518F02lVXvi7S6dVkVxg0qltXFp
+5BeX7jKsYea1Wp55KVybvQm0ZsnMC7vt1RtXq9UkjUbUQi5Yq7r5mo5Zlcoa1XBas2gKrYpIZEaU
+oghP1rUscc37M8gc77r4s9fPZ5R82Si8XhFJtGbxDHlp3QnjsvpOuPFaRDHkEuIdBTqa46lKEL/3
+R5LPtt0XEk+B1Sw5/VmiWg5kgoswx2cyA8+Ql8Sia+ezI4L8PvpbZ0wr1+rl8V+IZsipZTXojR29
+nOwv/964h3wtK+wWn9fEppOVGVVgQhZQIIDBl4yrla5loC+Z3/yNWtM6ZTZJYxHVkFMuAS0myU9V
+IngPI7+Fb5HvviQ2a0oVsiY2laxsBhF8MBt0gqDETHnJLLy2kUnk9/VkeauIqjcWgxQQ6D18EKIc
+cgrxDgFql4D+00aQ75atikbFsRzIoHUHc2h9EugqgYlZFwr0gmvsu20n+c98RnUDQT9v/W8Q7ZC2
+zcokjVDVjth7CPktmU6+0R1bDwT4x2VQCDOq0ENHgQNYfyiXAg5kXdgaIbjmfss/ZOMzVF3bZpPu
+GUQ9pM16lUn3MjOsM3bNasJdtDY0UHGPEZ8JBCdmU1jyUdADhDLjku8qCq7/2rAQuaaoYrZ11mLQ
+j0L0Q5qS2aR7XU2vKvOsP9PavXGyIYmwxGfKSbXxSB7oYYLYm4JwLCLiyf+Dv6jdaDoJWQBpYxlo
+kGarWQL6L5tJa/m7d1y6kJCD2bQ5JZ82HwG9xQY22+J72ERj4r9C9RJxLrIB6reaM8dtoNyG155Z
+vf5L8tsQomhUfnEZcuJsYWYFep/NRwooICFbPD7h69kS8Vf2i/EmvS9/oB3ZAfUrLXvO7So2s9po
+N4DffYj89kQrPlrCi8A8abalFoA+JvRQDvnFCsaKLeXNvHWz3TuI0mYeH8gSqF9IPrHGqNttN3Cn
+/4n8IhPJb3+6kHVJObQ9rZB2gH4Dr23xJwhsjll0EplVbX3QR+DkHqjPRW5uA1Q12vv47+Qfc1i+
+EyWCF9Z3pheCfshWNtvij/nYHLvYFDLPfllFqxrdeh4vyBqoLwvsX9sN1PmvkHl/muKDupvYu/ie
+zCLQj+HGFZiQbXsM2WzL8vmrau4gLkPWQH1jVibddLvLwEWTFY2Kv2vzWsnerGKgAXZnFVFwYpZ4
+TJdOV/Moz0fIHqhXxfsiKTbc40dQ+Xwq76ESEcDMir9r78suBRoiIrNE3iEvHNs1n9s9CMNq0E1A
+FkG9tAzUj7QapfOKAbnyI/nBZBH8ObY9mcUUlVMGNEhkTqn8PKJofC2rP7U30/o2wCi9iGyCelRm
+b/eHeVsRxWD88i1Fs+Izqz1ZJRSdWwY0DDetdQqmZV082V6/+DNmL+lJZBXUIwoyDb2BBVqD4szq
+Uy95H5WYbNqdUUyxR8uBExDNZlu8a4ZovK3zX7HbdtnPIN2G7IIcqo7jt2IVzeqDkWSNT5cbxYnY
+mVFEcSzQgfMQlVtKIWymZXPMD2SQ5WN7nUx1SXwvH7IMcmDdSvpUMeim/oEC41IUO17uSC+g/XkV
+wAmJOcpnWtm2x35/CllmPKVchDfpv0SWQY65I2jUPa3UecH69m8pMDqBghKzhGxPL6QDBRXAiYlm
+M61gUQzEJpH13YcUOzww03oe2QZ1b2Y1Ztj1LJjqhYE27hYK2hMptyURwTeFJhRUsqAGzg7fqyWM
+hcg4sigfK9a81uhxM7IO6pJ49wWzUYpRmsoHBvvIjfVE8FvfPJAPFlUBF4FvBBbFQ9AGs709Wglz
+RrhdjuyDOr+FwSj9S8msAhZOUD7wgJlV9NEyJLGLkVhUSeGH84RxEbD4HTvbHfQLkH1Q55aCJv0T
+inWrKY9RSMKF/uoi+F6rQ8XVwAVJKKiQd8PbjI3ELLJOH6FczzLqnkYWQqrEbzGzoMkRBtTYmykk
+IlLeNCiCP92fXFLNqAEuSmx+uTA+QqLiyPrq7UqmVYgeWpDau4IzlKbswetWKZpV2OGjlFRcRYdL
+aoGLw58VFcVJsFzP0ivthP8Y2Qgp161GedzCguWkKIiCFr5m97w7vi8npbQWAGZaNRTO3sBEsRK0
+aJLShtLTZoPu58hKSKnQvllYt5p4L61PTJePhBKxI6OIUsvrAPgP+/MrhPGy/mAWWd99UGlpuBNZ
+CdkutBv0I5WWguvCLYpmtSE5V35HTWNBCsDF7EwvEsbNui2hiktDdHWALjWrMbdfzYKjRLjfas7L
+siEpEZNbRukV9QBcwpHSC0tDUewEzTMqzbIqAr2HD0KWQhfNrsTPClrH3EihMfEssI4K4XcF08vr
+KaMSANvEsaWhKH5C4w6SdfytCifv6L9AlkKyAkfrb1U6Uj5k9Sd2jzpPKqqiLBaUAIjIrGygbamF
+whha5z9faZZ1zs/kfieyFXKzGHUrhfWDd39H4cnZ8nReBH9+LIsFIwD2OFhULY4ltjQMnPoHpW0O
+fshWl69d8YebdadFfdlDt26QH7NQIrWsjrKrGgFQxY70ImEshe7cyuJuiHCWxbfdIGtdWLwPkXCD
+6NxRtJEFkRL8UIKc6iYAVMMf3VGKqeAFY5WWhiuQtS4qP093D6tROmF7duVBYZER8qm/SvB9Njk1
+TQB0il2ZxcKYCo+JI4v3UOFmUr4qQPbizuCPd7TP+Yfcx0qJfdkldJQFHwCd5UhJrWJshXxmQndS
+6AcFGz3c2eC3iWpXG/fspM0p+YqkVdRRXm0TAF1iT1axMLY2RkYKa1l8VRAwevAQZLFL3RnUzxLW
+rj75i12z4rWrvNpmALoM7+igFGPBn3qKZ1lGaS6y2GXuDMq72oXHdW3cuYm2sIBRIq28lvLrmgHo
+MnyWtT2tQBhjGyN2Kz2y085XCchmF5DZpPcSzq4+eJa2pBYosiujiArrW6igDoDuEV9QqRhrwbP/
+Kt79btK9imx2ieWgbo9wdrVtvfyYjRIHC6uoiAUbAN0lt6pJMdY27tqitMUhHtns9MtB+RScb20+
+4DzlEdrGpuj2yK1pouKGFgAcAj+IVSnegmcJzzT8d6C37g5ktRPLapSmit6xNvjPYwFSqMi+nDIq
+bmwDwGGkltcrxlxY4FdKxfdPkNVOvRyUMmwOvvdQ2pp4mLazAFHiSGktkgw4lKKGVtqVXiyMuW2H
+MsjyynCRYRUhq51UAV76e4UdGWa/QDvSCxXZmVHEgquFSlmQAeBI4vMrFGNv3VzxFocAL49Hkd3O
+eHfQKH0lLLZv8LFrWPvzyqmssR0Ah8Ob/CnF3ubNAUq9332Q3U6mME+3y9jg1tqcVo+/lXYcyZXb
+2CqRVl6P5AI9QlF9q3L8peVTwGu/EJlWK4vvK5HlzlS7MumeEb1DhS4cJy/37FFY14LkAj1GdG65
+YvyFLp6Ivu8uVGxfJhrsrbs2yptBlYjMKaWypnYAeoyU0hrFGNy2b5fSnix/ZLlzbWcosrn36q1f
+0+7MYrskFVdTRXM7AD0G3/luLw6D3n1AZFg1yHInEe+FLV4OjlVlWFlVDVTZ0g5Aj8Jn8kpxuGHx
+W8JZlr9Jug/Z7gx3B036t0WDvCV0Fe1hgWCPksZWJBTocRILqhTjcOsmi3hZaNDNRLY7R/1qq2iQ
+dx06LPclUiLmaDkLpmMA9Dip5bWKsbj7SKZSz/coZLtz1K+abHYVffcB2ptVYpfk4hoWTMcB6HF4
+N1J78Rg87XFhYz++fQcZr2H5mwbfLZpdhS16nSKyS+ySWVFP1SyYAOhpyhrb7MZj+PLJSi1nHkDW
+a3s5OE40uNs2+6syLN4dsqblBNAw1a3HqbyxnYrrWymvpplyq5s6uPB5ThWnUf48v66FShraqLyp
+XTaR3v5do3PLFONx+44Qpe0Nk5D12jYsf9GpOHtTMuVWx/bg73o1rSeABihramOG1CKfZsRP447P
+r5RrkGrGWURMbrn8cw6X1FBmZSPl17bIZtZTryGxsErx94lIzyPL6GECw9KHIuu1bVg2uzMET32U
+9uWU2iWSvdtV80BqA/2NqpZjzDyaKV0+UbnqgjGpGFNHEX20TN6fx4+g53eRa9gszhGvK42Zrb3/
+O+T9p9C9wdnkO8HtCjaIZ20NbPjiN+U9L/bgLWxr20+AfgK/k5Zb3chmT9UUxd5M1IxhbxHDDOxQ
+cQ0dZSZa1Xqsy68xr6bJ7v+1aeV7oiXhd74TbrwW2a/J2ZX+v4X1q5BFFJVTZpfk4lqqY0EE+o4K
+tvzKqmqkRG5SKsasP8DrUElFzLxqmuX6WWdeb3FDm92fvz1stfi5QoP775H9WtwwatSbRIO6O2qn
+/A5tj4yKBphGH1DLlkb8ZkciW+qpGaf+DF+q8mUer3upee38++z9zD37o3E4hRMa1he2u4sOoaiM
+fPld0B48aWAgvUcVm41kVTbQ/vwKVeOjNQ4VV8vPDNYqXQO27LX7s7KLyfrKzwQ73qUlyH4tLgkN
+0kabBfdJ98r1BjXw47xgJD0PvxObVlZHsXnlqsdGyxwoqKSc6kaqabO9XFTzM0KmPmLbsEzSdmS/
+Nu8Qpth84PmTkfI0XQ2ljXwafxL0EPz68kK12vFwNvbnV8q72+vafnxd1PzbDXNfFt0pzEb2a9Ow
+Wmy2Q/7qVYplA64G3vajngUQcCz8MZRUPqNSOQ7ODr/ryXu7f3991PybTcsmCR/RQfZrTP7jhg4W
+Nuzzny0vPdTAb0/XHzsJHARfAvFWPXH55arHwJVIYSbOzVzN924L/FxYePf1GjwULqCpgrvHr4Ud
+Gjb6UlxehSr43aoGlmige9S3n5IfeTlQUKX62rsqfJmo5vt2bw8Sb20YJd0PF9CSYXlJT4oGM2Lf
+FvkulBp4ARSG0z1Km9rku2NqrzlQx764vQoHrOqehQtoSFaT7mXRYEYlxKkOCl5PgOl0Db60SSmt
+g7n0ENHJhxQegtYb4AJaMiyDboJoMGNT0+WDK9VQXN9CDcdPUSNLQKAOvscou6pB9TUGXSMuK088
+wzJI78AFtHSH0KT/wOZAmjwoPq9MfkZQLcklNfLDrTAjZeqZsefVNlFCYVWnri/oOqLNo2aj9C+4
+gKaK7rZ3uQeMv1XetNcVUspq5fYlMKdLKW5oletUXb22oGsEvn6nyLCWwgU0ZVjSUpvHerEBTiis
+7Bb8ubCKlmPUePyki3OKSphRcSPv7jUFXSNo4n+Jalir4QKa2jSq87H5WM7EX8tLFkfA98zwR3d4
+YZ4nr6vA75zyPlSH2FLZUdcSdI2Qd+8X1bDMcAFNFd0ls62BDHnnPrmjoyM5WFRN2VWNcq+mJpbQ
+zgp/KJe3Eeav19HXEHSNdVMeFj1PGAwX0FTRXQq2aVjvPSi3LOkpjrDl0fcPTDuDSfHd6fyRkbSK
+uh69bqBrrJ/xhOjxnHC4gKaWhFKgrYFcN+UheYbQG6RX1MutRHjrXC2ZFH/4lhfReS+wpF66VqBr
+rJ/1pGhrwya4gLZmWH62l4T3y0nY26SU1sqntfA2KnVt/Wv21XziG/l0GG6uvMVLX1wf0DXWT3tM
+sCTUrYcLaKvovtJ20f038sEBfQ2/s8b7IfGZDK8N8Z3hvWVQfGNnWVO73Jwwo7Je3mfWH64J6Dzr
+3ntQNMOywgW0tSRcbPO05zd+Ke8X6o8cYbOwTGYg/BACvsOez8Yqm9vlB7DrO2pizXbg38PNr7r1
+mNwLnW87KKxrln8mPxCWH1XVX18/6Dwhk+4VbWtYAxfQ1JJQv8CmYU34uTyj0Crc1Ph2Cj5Duxj+
+5xwtvzbQeYLfuke0rWE5XEBLG0cN0kc2B3L0MAQ6cBoCxt4kmGHpPocLaMqw9G+KHgw9lFcoL40A
+0DLJRRXik3MMumlwAS0tCQ06T9FgJqYeocNs+QSAljmYmSluL2OQxsAFtDTD8tY9JRrM+ITI/9R8
+ANAqBw7tFxuWl/4FuICm7hKKT32O3Rt6SdEaAK0RF71Z3CLZy+NRuICGxJvwC1skhy7quNMGgHaJ
+3LhCaFh+Buk2uIDGxI87sjWYO32myEdMAaBldq19X/Qc4fkwT7fL4ADaM6xsWwO6ef7/yT2tANAy
+W78aLZphlSL7Nbl5VNpu8+Tn6Y8h4IHmCfvwadEdwmhkvxbvFAq6jgaMvYHS2YDzbgoAaJWgCXeI
+emH5Ifu1eafwDeHm0bRkBD3QLIezsxTOJJSmIvu1OMMyeTwmGtT9e4Iogw08AFokPjJcvAfLpHsG
+2a9BBRs93NkA/tvWoO41f0yZlQ0AaJKIoLliwxoz7Hpkv2aXhVKZzTuF815E4APNsvXzUSLDakDW
+a9mwDNIWm8d9jb+FssprKYsNPgCaQqngbpD2Ies1vRdLN0NYeD8YSVlVDQBoikOHxc8Q4sRnzRuW
+/g+iwY0MmicfzwWAlohc94XCHULds8h6DWvZc25XWUzSGVuDu2nO83JfdQC0xJZ5L4oM61v/cUMH
+I+u1X3hPsPluNGY4ZVdUIwmAZsiuqKXAcaIuo1I6st0Z9mMZdfNEU+ik+F2UW90EgCZIPhgp3s5g
+lBYj2528jhVh+Yhya5oA0ASRCvuvUL9yEvFWG2xA22wN8saPnqajLBAA0AKbZo8UGdYpXq9FtjtL
+HcukD7P5rmTyoMz8o/KhogD0Z7IKC8k6eqjocZxdyHLn2kA6RjSVjlk3HwkB+j0xYV+J91+Z9G8j
+y53JsMZIkmh7Q+jUhyifBQQA/ZmwmY8LtzOs9Ro0HFnudMV3KVz0DpV2JI4K6poB6JekZxxS2N2u
+243sdsZZlpf+BdGg7139LguMFgD6Jfv8ZymcQagfhex2Qs0Z4XY5WxY22hr04Nd/QQXV9VTIggOA
+/kRBbROte+sekWG1W8bcfjWy20klapssPwwdHUaF9S0A9CuOHNih0KwP7ZCdWv7eut+JBn/7F6Oo
+qL4VgH7FrsXjxPUrL+lJZLWz17KMUq7NPVmjh1Fufi4VN7QC0C/IKymkgDHDRYZVRm5uA5DRTm9Y
++lnCR3V83kGigH5DlHmW0mETc5HNLqCA0UNu4qfj2jwC7JWfUV5xIZWwYAGgLykoK1PqzPCdn8n9
+TmSz6ywLrcLGfv6zqKSxDYA+JTboX0qzq3BksSsV302D7+bvUjb7vbN3Nf7uVsqCBoC+oKiqhoIn
+3K6w90r6LbLY5bY46DeIAiI2aDaVNbUB0CfEb1ig1PdqJ7LXFWtZXvp7RecWBr12GxVX17DgaQeg
+Vympa6CQN+5SMCyPR5C9rlrLMknbhadDr/+cylkAAdCbJGxeqrQUjEbWuvIsy+D+e1FwBL16KxWV
+F1N5czsAvUJxZYX8mJgoJgMM0p+Qta4+yzJI+0QBsmfJOKpoPgZAr7Bv1USl2lUCshVysxqkPyoE
+CWUl76NKFkwA9CQ5afFyB1zh7Mqofw7ZCtmtZYVN+z1VNDZTZcsxAHqEiuY22jTrj0qzqyhkKfSD
+YY2SbmdB8Y0oYBI2LKAqFlgA9ARJW1cKzcrfIJ3n+waRpdCPl4ZG/YeioAkcewMVl+RTdetxABxK
+aUWpfINHFHue91/9LQvPkchQ6EcK83S70mLU54sCZ+fCUUgw4HAilr0qNKuv/u5OV14+gFh4noVp
+QZfIbND9j1IBPi02lGpYkAHgCLKSdpHFpBfG2/03X8HN6ntgWpCNepZRH6q0N6u4OI9q2k4A0C3K
+Kkoo5I07hWY1ecSgi80KpgXZlv+ooTeygDkuCqTNH46g6uZWqmVBB0BXqGlpp21znhOale8oHQ27
+bqAtw4JpQbZmWdJkpaVhrP8Mqms/AUCXiA+erbSFgV74zdUis4JpQZdqzhy3gfy5LaWgyjywhQXf
+SQA6RfahPYobRD/883U0cICbPcOCaUE/mWWNGXY9C6B6UWDxfkXlZYVUz4IQADVUVJQq1q1WeOrI
+49qBaswKpgXZuGvorXtK1OiPs/Xjp6m2tZ3qj50EQJG6tmOKdSsz476bruiMWcG0IBszLZM0R2lp
+GOP7DjWwgARAiTjzdMW61T8fuKYrZgXTgi6tZ7F3vxilYEsM/Ywaj58CwCaHNn6paFadqFvBtKDu
+17M4R3atRnKCS0iLsCiaFa9bDRk0sLtmBdOCfiyrUfe0Uj2L3/nJ2h9OTSxIAeDkJG6jgNFDe6Ju
+BdOCVMy0DLqZSu+W/JTe/NRoajrxDXBxCjPjKWDs9YqzqxfvvdrRZgXTgn5qWtISpSAMfvUWKslL
+oWYWtMA1KSvIoODXblM0qzEPX9tTZgXTgn4Qi4QBFpNuvVIwrnvzLqosyaYWFrzAtagsy6P1E+9R
+NKtJfxzkiCI7TAtSJ7kVjUIveNm0Xv85leQkUcvJ08BFKGUza/5mpRQXs565jq64bEBvmBVMC/pB
+Kz2HXWc1SEeUgjOInyJ9eA+1smAGzk1hahQFjb9F0aw+fX4wXXNFr5oVTAv6QWbP64axQCxULMSP
+HkbZseuo7dRp4KTkxIdT4Jjhimb15d/dSbpmYF+YFUwL+kGB3ro7LEZdnVKw8iZtKduWIbmdkLRd
+PooPM3OW/UNHwwf3qVnBtKCLZlpGj19bjVKVomnxHfFBH1P7qTPASUha9ynZG/PFL7nTLdJl/cGs
+YFrQRaY1yuMWs1F31F4ARy0fTy3tbdT+zRmgUVrb2yl61et2zWrBX92VGvHBtKC+lZ+nuwdbHibZ
+C+RN039PVcWZdIwFP9AW1aU5tHnGo3bNavZzg8n96gH90axgWtAP8p1w47UsYHfaC2h+dFhWpIWO
+nz4LNEJObAgFjb/JrllNf/o6uvqKfm1WMC3oB80Z4XY5C1yrvcDmRK+YQG1siQhD6L+0HTtGsT5v
+kZrxfPPxQXT5QDctmBVMC/ppMV7/hZog3zjtIapmS8QTLDlA/6JWXgI+osqsjL+7hga4acqsYFrQ
+j2Ux6t9iwXzW/hLxesrc48uS5DSdPHMW9DWnz7Aluz8FjbvRrlH5GyT6319dpUWjgmlBl8pq0D3I
+ArtEzbv0to+foqqCFJY050AfUVOUQds/eUbVrIqfznzn0Mu1blYwLegnxXhPvc5qlMLVJAHfiHjA
+fwq1tzXRqbPnQC9x7FgrJVpnktV7iCqz4oedDrpygLOYFUwLslHXMunftpikM2oSYv2bv6SjsSEw
+k14g70AYhU68W5VRfb8EHOBcRgXTgkSmpXuAmVaxmuTg7Jo7kupLc+ibs+eBg2mozKc9n/2N1I6F
+ky0BYVqQOgUbPdwtJn2Y2kThrXZjV75ODRV5dPrcedBNmqqLaL/vRPnhdLVj8K5zLgFhWpB6BRil
+F1kyVKhNGl7filryCtWWZMB4ukB9WQ7FLB+vuk71/fOAD992pSsZFUwLUijI893xJv0Clhzn1CYR
+J2KhJ9XkJdOZc98CO9QWplLk10a5c4ba68trVV4PXqOVXeswLah3Feg95FcsUWI7Y1qc3fNeoIrM
+GJaY5+nM+W/BRVTlHKC9C16izl7TD569rr91WYBpQf1TVoPeaLfHlg3CJ/+WjoR9Ri01RXSWJaur
+0lpXRqmbFtDGKQ922qhWeuq+ffwXVzrzHUCYFtQDy0RPva7jhJ6znU06zs45z9LRSH86ebyFzn37
+rdNz6mQ75cUE0O65Izu17LsIthzX+Txxx5X3sstfAnOCaUFdKcqPHnJTh3F90xXj4q17o5e+QmWp
+e+n06W9Ycn/nNJw5c5rK0yMpdvk4+dGmrlyfC3vidCv9DNJtF132W2FaMC2oW/Wt637WUZg/3qXE
+7DCv3fP+QmmbFlJtfhKdPXuWzrPE1wrnzp2jusJkSt/yNe2d/zcKGnsDdfVaME6yN4Kvg0xDbxBc
+cpgWTAvqrkIMOj1LtNks4Vq6kawXDn0dfxNFLHiJMncsofriFDZrOU/nv/uu/8CWeo0l6ZS1cxnt
+W+gpH1Lb3dfMaDcbdfN8vQYPVXG5YVowLcgRko8ZM+pmsASsdkASdxjYzXLt66B5ilz/qs9PppPt
+TfTtd//ucU4da6b6wsOUF2Wmg5ZptOvT5yjktVvJUa+N38QwG6SPeG2wk5capgXTghylOXPcBlpM
+umdYUgbKyxyHJfiPZ2JbZj5C+778P2YmUyh143zK3buaihPDqTorhuoLktlMKI2aK3KotaaAjjWU
+UVttofw1/3P+9zXZsVSSuJFyI3zZkvRz9nOmUuRX/6StMx+VjbInfm9e92Omvi7AqH8uzNPtsm5c
+ZpgWTAtyfJ1r+CCrSRrNEjWK8V0PmUB/598WkxTHPo7jjz858PLCtGBaUM/eXdTNZImb6xJGZZAK
+rEb9hz+52+dowbRgWlBPy980+G6W1JMtRn2Exag77SQmxfenRVmN0lR+LmQvXk6YFkwL6i1deG7R
+43+tRt18lvD7u7q/q9cxSWfYcvcA39phNur/wpe/fXgZYVowLahvDMztCrO3+8NWg/QOMwU/Zg6H
+Gaf62KC4iaaw38nMZ4Zmk8djy55zu6qfXTqYFkwL6g+S7zwa3O+ymvTPM8OYxGY2iywGaQv7PINR
+29XHhX7yGEwdM8hMs1Haxr5eLBuml/4Fvnzl/79GLhVMC6YFaUF8HxgvcAeMku4P8PJ4lJnPCLbM
+fJabDjO3l/hH+Wv253yGxL/PMkq63X/c0MFOdilgWjAtCIJpwbQgCIJpwbQgCIJpwbQgCKYF04Ig
+CKYF04IgCKYF04IgmBZMC4IgmBZMC4IgmFYnTOt5hAkEwbRgWhAEwbRgWhAE04JpwbQgCKYF04Ig
+CKYF04IgmBaAaUEQTAumBUEQTAumBUEwLQDTgiCYFkwLgiCYFkwLgmBaAKYFQTAtmBYEQTAtmBYE
+wbQATAuCYFowLQiCYFowLQiCaQGYFgTBtGBaEATBtGBaEATTAjAtCIJpwbQgCIJpwbQgCKYFYFoQ
+BNOCaUEQBNOCaUEQTAsGBdOCIJgWTAuCIJgWTAuCYFowJ5gWBMG0YFoQBMG0YFoQBNOCacG0IAim
+BdOCIAimBdOCIMjtFpgWTAuCYFowLQiCYFowLQiCYFowLQiCacG0IAiCacG0IAiCacG0IAimBdOC
+IAimBdOCIAimBdOCIJgWTAuCIJgWTAuCIJgWTAuCYFowLQiCYFowLQiCYFowLQiCacG0IAiCacG0
+IAiCacG0IAimBdOCIAimBdOCIAimBdOCIJiWC5jWkwgTCIJpaYVmxh0IEwiCaWmFHMYghAkEwbS0
+wgcIEQiCaWmFNoaEEIEgmJZW+AjhAUEwLa2QjtCAIJiWlrgZoQFBMC2t4I2wgCCYllaYhZCAIJiW
+VliCcIAgmJZW8EcoQBBMSyvMRxhAEExLK7yDEIAgmJZW+DOGH4JgWlrgFONqDD0EwbS0wFYMOQTB
+tLTCXzHcEATT0gLJjAEYagiCaWmBpzHEEATT0gILMbQQBNPSAjsZl2FYIQimpYW6lTuGE4JgWlow
+K7REhiCYFswKgiCYFswKgiCXMS2YFQRBmjAtmBUEQZowLZgVBEGaMC2YFQRBmjAtmBUEQZowLZgV
+BEGaMC2YFQRBmjAtmBUEQZowLZgVBEGaMC2YFQRBDjetnB4wq/0wKwiCekKDGdscaFY+jCtxWSEI
+6ikNZMxkHOuGUdUzxuFSQhDUWxridqE98YlOGFUz433GIFw+CIL6QlcxnmUsZyS4XSjOf8M4zih0
+u1Cj+oLxBOPynv5l/h/qyGQ2KYXcXQAAAABJRU5ErkJggg==
+"
+       preserveAspectRatio="none"
+       height="123.57143"
+       width="123.57143" />
+    <g
+       id="g5648"
+       transform="translate(0,-1.4061279e-5)">
+      <rect
+         y="662.36212"
+         x="308.57144"
+         height="61.42857"
+         width="425.71429"
+         id="rect4136"
+         style="opacity:1;fill:#b5ffb5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5592"
+         y="703.41821"
+         x="440.6571"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="703.41821"
+           x="440.6571"
+           id="tspan5594"
+           sodipodi:role="line">Region 1</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="fragment1"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <rect
+       transform="translate(0,-287.36218)"
+       style="opacity:1;fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.58242333;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5"
+       width="426.13187"
+       height="38.417576"
+       x="308.36264"
+       y="614.75568" />
+    <text
+       transform="translate(0,-287.36218)"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="444.14832"
+       y="646.47424"
+       id="text5611"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5613"
+         x="444.14832"
+         y="646.47424"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">read/write</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="fragment2"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <rect
+       transform="translate(0,-287.36218)"
+       style="opacity:1;fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.4339397;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5-5"
+       width="348.56607"
+       height="38.566059"
+       x="386.00269"
+       y="567.28375" />
+    <text
+       transform="translate(0,-287.36218)"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="511.19513"
+       y="592.35168"
+       id="text5611-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5613-6"
+         x="511.19513"
+         y="592.35168"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">mmap</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="fragment3"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <rect
+       style="opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.96137047;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5-5-8"
+       width="24.652441"
+       height="38.038628"
+       x="641.17383"
+       y="232.78761" />
+    <text
+       transform="translate(0,-287.36218)"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="679.48083"
+       y="547.41125"
+       id="text5611-4-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5613-6-0"
+         x="679.48083"
+         y="547.41125"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">quirk</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="fragment4"
+     style="display:inline">
+    <rect
+       style="display:inline;opacity:1;fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.58242333;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5-0"
+       width="426.13187"
+       height="38.417576"
+       x="0.79121166"
+       y="162.39349" />
+    <rect
+       style="display:inline;opacity:1;fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.4339397;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5-5-3"
+       width="348.56607"
+       height="38.566059"
+       x="78.431252"
+       y="162.31924" />
+    <rect
+       style="display:inline;opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.96137047;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136-5-5-8-2"
+       width="24.652441"
+       height="38.038628"
+       x="333.60236"
+       y="162.58296" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect6662"
+       width="380"
+       height="98.571426"
+       x="70"
+       y="55.736111" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="147.58273"
+       y="194.11205"
+       id="text5611-4-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5613-6-2"
+         x="147.58273"
+         y="194.11205"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">flattened</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="fragment5"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <path
+       style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.56268144;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 338.57143,215.14841 0,97.67893"
+       id="path5706"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="display:inline;opacity:1;fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect6889"
+       width="152.02795"
+       height="30.304577"
+       x="138.3909"
+       y="166.29512"
+       transform="translate(307.57143,165)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="fragment6"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <path
+       style="display:inline;fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.56268144;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-5)"
+       d="m 480.42857,215.14841 0,97.67893"
+       id="path5706-1"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="fragment7"
+     style="display:inline"
+     transform="translate(-307.57143,-165)">
+    <path
+       style="display:inline;fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.56268144;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-8)"
+       d="m 649,215.14841 0,97.67893"
+       id="path5706-4"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

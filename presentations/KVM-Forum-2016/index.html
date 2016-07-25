@@ -28,14 +28,493 @@
 			<a id="logo-white"><img src="../images/Red_Hat_RGB_reverse.png" alt=""/></a>
 			<a id="logo-black"><img src="../images/Red_Hat_RGB.png" alt=""/></a>
 
+			<header style="position:absolute; left:10%; top:10%; z-index:100; font-size:1.55em"></header>
+
 			<div class="slides">
 				<section data-state="logo-light" data-background-image="../images/1574736-corporate-1.svg">
-					<div style="width:130%; margin-left:-15%">
-						<h2><font color=#ffffff>An Introduction to PCI Device Assignment with VFIO</font></h2>
-						<p>
-							<font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a>
-						</p>
-					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<h3 align="left"><font color=#ffffff>An Introduction to PCI Device Assignment with VFIO</font></h3>
+					<p>&nbsp;</p>
+					<p align="left" style="font-size:25px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
+				</section>
+
+				<section data-background-transition="slide">
+					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
+						<h2>What is VFIO?</h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h2><font color=#000000><b>V</b></font>irtual <font color=#000000><b>F</b></font>unction <font color=#000000><b>I/O</b></font></h2>
+						<p class="fragment" data-fragment-index="1">Officially, but it's not limited to SR-IOV, or even PCI</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<p class="fragment fade-out" data-fragment-index="1">Some suggest...</p>
+						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>ery <font color=#000000><b>F</b></font>ast <font color=#000000><b>I/O</b></font></h2>
+						<p class="fragment" data-fragment-index="2">Sort of, yeah...</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<p class="fragment fade-out" data-fragment-index="1">I've also heard...</p>
+						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>irtual <font color=#000000><b>F</b></font>abric <font color=#000000><b>I/O</b></font></h2>
+						<a class="fragment" data-fragment-index="2"><img data-src="./images/fabric.png" style="background:none; border:none; box-shadow:none;"></a>
+						<p class="fragment" data-fragment-index="2">Fabric?</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<p class="fragment fade-out" data-fragment-index="1">Let me propose...</p>
+						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>ersatile <font color=#000000><b>F</b></font>ramework for userspace <font color=#000000><b>I/O</b></font></h2>
+						<p class="fragment" data-fragment-index="2">(OK, not really, but it's more accurate)</p>
+					</section>
+					<section data-transition="slide-in convex-out" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
+						<h3>VFIO is a secure, userspace</br>driver framework</h3>
+						<ul>
+							<li class="fragment">Hardware IOMMU based DMA mapping and isolation</li>
+								<ul>
+									<li class="fragment">IOMMU group based</li>
+								</ul>
+							<li class="fragment">Modular IOMMU and bus driver support</li>
+								<ul>
+									<li class="fragment">PCI and platform devices currently supported</li>
+									<li class="fragment">IOMMU API (type1) and ppc64 (SPAPR) models</li>
+								</ul>
+							<li class="fragment">Full device access, DMA, and interrupt support</li>
+								<ul>
+									<li class="fragment">Read/write &amp; mmap support of device resources</li>
+									<li class="fragment">Mapping of user memory to I/O virtual addresses</li>
+									<li class="fragment">eventfd and irqfd based signaling mechanisms</li>
+								</ul>
+						</ul>
+					</section>
+					<section data-transition="convex" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
+						<p>Weren't we talking about device assignment...</p>
+					</section>
+					<section data-transition="convex" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
+						<h3>The requirements are the same</h3>
+						<ul>
+							<li class="fragment">Access to device resources</li>
+							<li class="fragment">Isolation and secure DMA mapping through an IOMMU</li>
+							<li class="fragment">Interrupt signaling support</li>
+						</ul>
+						<p>&nbsp;</p>
+						<div style="width:60%; margin-left:20%" align="center">
+							<p class="fragment">Device assignment can be thought of as a multi-layer userspace driver</p>
+						</div>
+					</section>
+					<section data-transition="convex" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
+						<h3>Also enables other userspace drivers</h3>
+						<ul>
+							<li><a href="http://dpdk.org/">DPDK</a> - Data Plane Development Kit (NFV)</li>
+							<li><a href="https://github.com/MicronSSD/unvme">UNVMe</a> - A userspace NVMe driver</li>
+							<li><a href="https://github.com/andre-richter/rVFIO">rVFIO</a> - Ruby wrapper gem for VFIO</li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-background-transition="slide">
+					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
+						<h2>How does VFIO do this?</h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>VFIO provides acccess to a device within a secure and programmable IOMMU context</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Let's start with the device</h3>
+						<div align="left">
+							<ul>
+								<li class="fragment">How does an operating system program a device?</li>
+								<li class="fragment">How does a device signal the operating system?</li>
+								<li class="fragment">How does a device transfer data?</li>
+							</ul>
+						</div>
+						<p>&nbsp;</p>
+						<div style="width:70%; margin-left:15%" align="center">
+							<p class="fragment">VFIO takes an abstract view of a device, we want to support <font color=#cc0000><b>anything</b></font></p>
+						</div>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>How does an operating system program a PCI device?</h3>
+						<div align="left">
+							<ul>
+								<li class="fragment" data-fragment-index="1">Programmed I/O</li>
+								<ul>
+									<li class="fragment" data-fragment-index="1">IN/OUT</li>
+									<li class="fragment" data-fragment-index="1">read/write</li>
+								</ul>
+								<li class="fragment" data-fragment-index="2">PCI Configuration Space</li>
+							</ul>
+						</div>
+						<p>&nbsp;</p>
+						<p style="font-size:20px" class="fragment" data-fragment-index="5">&lt;queue UNIX "everything is a file" theme song...&gt;</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>The VFIO device file descriptor</h3>
+						<p>&nbsp;</p>
+						<div class="side-by-side">
+                                                	<div class="side">
+								<a><img data-src="./images/Binary-File-Plain-300px.png" style="background:none; border:none; box-shadow:none;"></a>
+							</div>
+                                                	<div class="side">
+								<ul>
+									<li>Divided into regions</li>
+									<li>Each region maps to a device resource</li>
+									<ul>
+										<li>Ex. MMIO BAR, IO BAR, PCI config space</li>
+									</ul>
+									<li>Region count and info discovered through ioctl</li>
+									<ul>
+										<li>File offset, allowable access, etc.</li>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>A PCI device example</h3>
+          					<div data-svg-fragment="./images/lspci.svg#[*|label=base]">
+            						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
+            						<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
+						</div>
+						<p class="fragment" data-fragment-index="1">These are all regions</p>
+						<p class="fragment" data-fragment-index="2">Even PCI config space itself is a region</p>
+					</section>
+					<section data-transition="slide-in none-out" data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Regions map to device file offsets</h3>
+						<img data-src="./images/vfio-file-fd.png" style="background:none; border:none; box-shadow:none;">
+					</section>
+					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
+						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
+					</section>
+					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
+						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
+
+						<p>VFIO_DEVICE_GET_INFO</p>
+						<a><img data-src="./images/vfio_device_info.png" style="background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
+						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
+						<div align="left">
+							<p>VFIO_DEVICE_GET_REGION_INFO</p>
+							<a><img data-src="./images/vfio_region_info.png" style="background:none; border:none; box-shadow:none;"></a>
+						</div>
+					</section>
+					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
+						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
+						<div align="right">
+							<p>VFIO_DEVICE_GET_IRQ_INFO</p>
+							<a><img data-src="./images/vfio_irq_info.png" style="background:none; border:none; box-shadow:none;"></a>
+						</div>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Speaking of interrupts</h3>
+						<p>&nbsp;</p>
+						<div align="left">
+							<p class="fragment">Q: How does a device signal the operating system?</p>
+							<p class="fragment">A: Interrupts</p>
+						</div>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>How do we interrupt userspace?</h3>
+						<div class="fragment">
+							<pre><code>
+EVENTFD(2)           Linux Programmer's Manual            EVENTFD(2)
+
+NAME
+   eventfd - create a file descriptor for event notification
+
+SYNOPSIS
+   #include &lt;sys/eventfd.h&gt;
+
+   int eventfd(unsigned int initval, int flags);
+
+DESCRIPTION
+   eventfd() creates an "eventfd object" that can be used as an event
+   wait/notify mechanism by user-space applications, and by the kernel
+   to notify user-space applications of events...
+							</code></pre>
+						</div>
+						<p style="font-size:20px" class="fragment">&lt;queue UNIX "everything is a file" theme song... again&gt;</p>
+					</section>
+					<section datHow does a device transfer data?a-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>VFIO_DEVICE_SET_IRQS<h3>
+						<a><img data-src="./images/vfio_irq_set.png" style="background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3 class="fragment fade-out" data-fragment-index="1">One remaining question</h3>
+						<h3 class="fragment" data-fragment-index="1">How does a device transfer data?<h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Direct Memory Access - DMA</h3>
+						<ul>
+							<li>I/O device can read &amp; write:</li>
+							<ul>
+								<li>System memory (RAM)</li>
+								<li>Peer device memory</li>
+							</ul>
+							<li>Outside of CPU MMU control</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p class="fragment">Need an MMU for I/O</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>IOMMU Roles</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Translation</li>
+							<ul>
+								<li class="fragment" data-fragment-index="1">I/O Virtual Address (IOVA) space</li>
+								<li class="fragment" data-fragment-index="1">Previously the main purpose of an IOMMU</li>
+							</ul>
+							<li class="fragment" data-fragment-index="2">Isolation</li>
+							<ul>
+								<li class="fragment" data-fragment-index="2">Per device translation</li>
+								<li class="fragment" data-fragment-index="2">Invalid accesses blocked</li>
+							</ul>
+						</ul>
+						<p>&nbsp;</p>
+						<p class="fragment" data-fragment-index="3">Both required for secure user access</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>IOMMU Issues</h3>
+						<ul>
+							<li>DMA Aliasing</li>
+							<ul>
+								<li>Not all devices generate unique IDs</li>
+								<li>Not all devices generate the ID they should</li>
+							</ul>
+							<li>DMA Isolation</li>
+							<ul>
+								<li>Is all DMA between peers translated?</li>
+							</ul>
+						</ul>
+						<p>&nbsp;</p>
+						<div align="left">
+							<p class="fragment" data-fragment-index="1">Solution: <a href="http://vfio.blogspot.com/2014/08/iommu-groups-inside-and-out.html">IOMMU groups</a></p>
+						</div>
+						<p class="fragment" data-fragment-index="2">VFIO design is heavily influenced by IOMMU groups</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Memory Issues</h3>
+						<ul>
+							<li>IOVA page faults are not supported end-to-end</li>
+							<ul>
+								<li>IOVA to physical mappings are static</li>
+							</ul>
+							<li>User memory can be relocated</li>
+							<ul>
+								<li>Swapping, page merging, etc</li>
+							</ul>
+						</ul>
+						<p>&nbsp;</p>
+						<p align="left" class="fragment">Solution: Page pinning<p>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>A few downsides...</h3>
+						<ul>
+							<li>Pinned memory is locked memory</li>
+							<ul><li>User requires sufficient locked memory limits</li></ul>
+							<li>Prevents page merging and swapping</li>
+							<ul><li>As intended, but we like those features</li></ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Let's walk through an example</h3>
+					</section>
+					<section data-state="logo-dark">
+          					<div data-svg-fragment="./images/vfio-files.svg#[*|label=base]">
+            						<a class="fragment" title="[*|label=fragment1]"></a>
+            						<a class="fragment" title="[*|label=fragment2]"></a>
+            						<a class="fragment" title="[*|label=fragment3]"></a>
+            						<a class="fragment" title="[*|label=fragment4]"></a>
+            						<a class="fragment" title="[*|label=fragment5]"></a>
+            						<a class="fragment" title="[*|label=fragment6]"></a>
+            						<a class="fragment" title="[*|label=fragment7]"></a>
+            						<a class="fragment" title="[*|label=fragment8]"></a>
+            						<a class="fragment" title="[*|label=fragment9]"></a>
+            						<a class="fragment" title="[*|label=fragment10]"></a>
+            						<a class="fragment" title="[*|label=fragment11]"></a>
+          					</div>
+					</section>
+					<section data-state="logo-dark">
+						<h2>VFIO <i>in a nutshell</i></h2>
+          					<div data-svg-fragment="./images/vfio-overview.svg#[*|label=base]">
+            						<a class="fragment" title="[*|label=fragment1]"></a>
+            						<a class="fragment" title="[*|label=fragment2]"></a>
+            						<a class="fragment" title="[*|label=fragment3]"></a>
+            						<a class="fragment" title="[*|label=fragment4]"></a>
+            						<a class="fragment" title="[*|label=fragment5]"></a>
+            						<a class="fragment" title="[*|label=fragment6]"></a>
+          					</div>
+						<p class="fragment">A device decomposed</p>
+					</section>
+				</section>
+
+				<section data-background-transition="slide">
+					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
+						<h2>Recomposing a device</h2>
+					</section>
+					<section data-state="logo-dark">
+						<h3 align="left">Deconstructed device in userspace...</h3>
+          					<div data-svg-fragment="./images/vfio-qemu.svg#[*|label=base]">
+            						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
+          					</div>
+						<h3 align="right" class="fragment" data-fragment-index="1">...turns into assigned device</h3>
+					</section>
+					<section data-state="logo-dark">
+          					<div data-svg-fragment="./images/qemu.svg#[*|label=base]">
+            						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
+            						<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
+          					</div>
+						<p class="fragment" data-fragment-index="2" align="right"><i>"Creating fake devices since 2003"</i></p>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Same questions, different perspective</h3>
+						<ul>
+							<li>How does the guest program a device?</li>
+							<li>How does a device signal the guest?</li>
+							<li>How does a device transfer data?</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Device Programming</h3>
+						<p>How does VM programmed I/O reach a device?<p>
+						<ul>
+							<li class="fragment">Trapped by hypervisor (QEMU/KVM)</li>
+							<li class="fragment">MemoryRegion lookup performed</li>
+							<li class="fragment">MemoryRegion.{read,write} accessors called</li>
+							<li class="fragment">read/write to vfio region offsets</li>
+						</ul>
+					</section>
+				
+					<section data-state="logo-dark">
+						<h3>MemoryRegion Layering</h3>
+						<ul>
+							<li>"Slow" read/write base layer</li>
+							<li>"Fast" mmap overlay</li>
+							<li>"Quirks" to correct device virtualization issues</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+          					<div data-svg-fragment="./images/vfio-memoryregions.svg#[*|label=base]">
+            						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
+            						<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
+            						<a class="fragment" data-fragment-index="3" title="[*|label=fragment3]"></a>
+            						<a class="fragment" data-fragment-index="4" title="[*|label=fragment4]"></a>
+            						<a class="fragment" data-fragment-index="5" title="[*|label=fragment5]"></a>
+            						<a class="fragment" data-fragment-index="6" title="[*|label=fragment6]"></a>
+            						<a class="fragment" data-fragment-index="7" title="[*|label=fragment7]"></a>
+						</div>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Device Programming</h3>
+						<p>How do VM PCI Config accesses reach a device?<p>
+						<ul>
+							<li>Not handled as MemoryRegions <font style="font-size:20px">(yet)</font></li>
+							<li>Selective handling</li>
+							<ul>
+								<li>Direct pass-through</li>
+									<ul><li>read/write to config region</li></ul>
+								<li>Emulation &amp; Virtualization</li>
+									<ul><li>MSI/X, BARs, ROM, etc.</li></ul>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Interrupt Signaling</h3>
+						<ul>
+							<li>QEMU configures vfio interrupt ioctl for device state</li>
+							<li>Interrupts signal via eventfd</li>
+							<li>EventNotifiers trigger QEMU device interrupts</li>
+							<li>But this is a two step process</li>
+								<ul><li>host &rarr; QEMU, QEMU &rarr; VM</li></ul>
+							<li>How to make it faster?</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>irqfd</h3>
+						<ul>
+							<li>eventfds signal events</li>
+							<li>irqfds receive event signals</li>
+							<li>eventfds can signal irqfds</li>
+							<li>KVM supports VM interrupts through irqfd</li>
+							<li>One step process: host &rarr; KVM</li>
+							<li>APIC Virtualization (Intel APICv)</li>
+								<ul><li>Exit-less interrupts into VM</li></ul>
+							<li>VT-d Posted Interrupts</li>
+								<ul><li>Interrupts direct to vCPU</li></ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3 class="fragment fade-out" data-fragment-index="1">Last question</h3>
+						<h3 class="fragment" data-fragment-index="1">How does a device transfer data?<h3>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Enabling DMA for the VM</h3>
+						<h4>Two options</h4>
+						<ul>
+							<li>Emulated/para-virtulized IOMMU</li>
+							<ul>
+								<li>IOMMU on x86 is optional</li>
+								<li>Cannot require guest use it for DMA</li>
+								<li>Overhead for dynamic mappings</li>
+								<li>Not actually an option</li>
+							</ul>
+							<li>Transparent VM mapping</li>
+							<ul>
+								<li>Map entire VM physical address space</li>
+								<li>Guest OS unaware of IOMMU, DMA is physical</li>
+							</ul>
+					</section>
+<!--
+						<p align="left"  class="fragment" data-fragment-index="1">Programmed I/O: IN/OUT, read/write</p>
+						<ul>
+							<li class="fragment" data-fragment-index="2">QEMU MemoryRegions</li>
+							<ul>
+								<li>Define 
+									<li class="fragment" data-fragment-index="2">MemoryRegion for each PCI BAR</li>
+									<li class="fragment" data-fragment-index="2">Base "slow" access</li>
+									<ul><li class="fragment" data-fragment-index="2">pread(2)/pwrite(2)</li></ul>
+									<li class="fragment" data-fragment-index="2">Overlapping MemoryRegions</li>
+									<li class="fragment" data-fragment-index="2">Overlay provies "fast" access</li>
+									<ul><li class="fragment" data-fragment-index="2">mmap(2)</li></ul>
+								<li class="fragment" data-fragment-index="2">Also useful for "quirks"</li>
+							</ul>
+						</ul>
+						<p align="left" class="fragment" data-fragment-index="1">PCI Configuration Space</p>
+					</section>
+-->
+<!--
+					<section data-state="logo-dark">
+						<ul>
+							<li>Remaps device regions into VM address spaces</li>
+							<li>Adds additional emulation and virtualization</li>
+							<li>Maps the VM address spaces to the device</li>
+							<li>Wires and relays VM interrupts</li>
+							<li>Tries to <i>stay out of the way</i></li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Staying out of the way 101</h3>
+						<ul>
+							<div class="fragment">
+							<li>DMA translation through the IOMMU</li>
+							<ul>
+								<li>Allows VM drivers to operate transparently</li>
+							</ul>
+							</div>
+							<div class="fragment">
+							<li>Direct mapped MMIO</li>
+							<ul>
+								<li>mmap(2) regions into userspace and to the VM</li>
+								<li>Eliminate QEMU from the data path</li>
+							</ul>
+							</div>
+							<div class="fragment">
+							<li>Accelerate interrupt paths</li>
+							<ul>
+								<li>Wire VFIO eventfds directly to KVM irqfds</li>
+								<li>Allow self-discovery of bypass mechanisms</li>
+							</ul>
+							</div>
+						</ul>
+					</section>
+-->
 				</section>
 
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
@@ -60,7 +539,9 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/svg-fragment/reveal-svg-fragment.js',
+					  condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
 				]
 			});
 		</script>
