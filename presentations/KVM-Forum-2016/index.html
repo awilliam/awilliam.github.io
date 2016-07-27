@@ -44,23 +44,23 @@
 						<h2>What is VFIO?</h2>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
-						<h2><font color=#000000><b>V</b></font>irtual <font color=#000000><b>F</b></font>unction <font color=#000000><b>I/O</b></font></h2>
+						<h2><font color=#cc0000><b>V</b></font>irtual <font color=#cc0000><b>F</b></font>unction <font color=#cc0000><b>I</b></font>/<font color=#cc0000><b>O</b></font></h2>
 						<p class="fragment" data-fragment-index="1">Officially, but it's not limited to SR-IOV, or even PCI</p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<p class="fragment fade-out" data-fragment-index="1">Some suggest...</p>
-						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>ery <font color=#000000><b>F</b></font>ast <font color=#000000><b>I/O</b></font></h2>
+						<h2 class="fragment" data-fragment-index="1"><font color=#cc0000><b>V</b></font>ery <font color=#cc0000><b>F</b></font>ast <font color=#cc0000><b>I</b></font>/<font color=#cc0000><b>O</b></font></h2>
 						<p class="fragment" data-fragment-index="2">Sort of, yeah...</p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<p class="fragment fade-out" data-fragment-index="1">I've also heard...</p>
-						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>irtual <font color=#000000><b>F</b></font>abric <font color=#000000><b>I/O</b></font></h2>
+						<h2 class="fragment" data-fragment-index="1"><font color=#cc0000><b>V</b></font>irtual <font color=#cc0000><b>F</b></font>abric <font color=#cc0000><b>I</b></font>/<font color=#cc0000><b>O</b></font></h2>
 						<a class="fragment" data-fragment-index="2"><img data-src="./images/fabric.png" style="background:none; border:none; box-shadow:none;"></a>
 						<p class="fragment" data-fragment-index="2">Fabric?</p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<p class="fragment fade-out" data-fragment-index="1">Let me propose...</p>
-						<h2 class="fragment" data-fragment-index="1"><font color=#000000><b>V</b></font>ersatile <font color=#000000><b>F</b></font>ramework for userspace <font color=#000000><b>I/O</b></font></h2>
+						<h2 class="fragment" data-fragment-index="1"><font color=#cc0000><b>V</b></font>ersatile <font color=#cc0000><b>F</b></font>ramework for userspace <font color=#cc0000><b>I</b></font>/<font color=#cc0000><b>O</b></font></h2>
 						<p class="fragment" data-fragment-index="2">(OK, not really, but it's more accurate)</p>
 					</section>
 					<section data-transition="slide-in convex-out" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
@@ -84,6 +84,7 @@
 						</ul>
 					</section>
 					<section data-transition="convex" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
+						<h3>Userspace drivers?</h3>
 						<p>Weren't we talking about device assignment...</p>
 					</section>
 					<section data-transition="convex" data-state="logo-dark" data-background-image="../images/1748213-drawing2.svg">
@@ -131,7 +132,8 @@
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>How does an operating system program a PCI device?</h3>
-						<div align="left">
+						<div class="side-by-side">
+							<div class="side">
 							<ul>
 								<li class="fragment" data-fragment-index="1">Programmed I/O</li>
 								<ul>
@@ -140,9 +142,12 @@
 								</ul>
 								<li class="fragment" data-fragment-index="2">PCI Configuration Space</li>
 							</ul>
+							</div>
+							<div class="side fragment" data-fragment-index="2">
+								<a><img data-src="./images/Pci-config-space.svg" style="background:none; border:none; box-shadow:none;"></a>
+							</div>
 						</div>
-						<p>&nbsp;</p>
-						<p style="font-size:20px" class="fragment" data-fragment-index="5">&lt;queue UNIX "everything is a file" theme song...&gt;</p>
+						<p style="font-size:20px" class="fragment" data-fragment-index="3">&lt;queue UNIX "everything is a file" theme song...&gt;</p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>The VFIO device file descriptor</h3>
@@ -280,14 +285,26 @@ DESCRIPTION
 							</ul>
 							<li>DMA Isolation</li>
 							<ul>
-								<li>Is all DMA between peers translated?</li>
+								<li>Peer-to-peer DMA translation</li>
 							</ul>
 						</ul>
-						<p>&nbsp;</p>
-						<div align="left">
-							<p class="fragment" data-fragment-index="1">Solution: <a href="http://vfio.blogspot.com/2014/08/iommu-groups-inside-and-out.html">IOMMU groups</a></p>
-						</div>
-						<p class="fragment" data-fragment-index="2">VFIO design is heavily influenced by IOMMU groups</p>
+						<p style="font-size:5px">&nbsp;</p>
+						<a><img data-src="./images/p2p-dma.svg" style="width:70%; height:70%; background:none; border:none; box-shadow:none;"/></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
+						<h3>Solution: <a href="http://vfio.blogspot.com/2014/08/iommu-groups-inside-and-out.html">IOMMU groups</a></h3>
+						<ul>
+							<li>Group of devices with DMA isolation from other groups</li>
+							<li>Grouping determined by IOMMU driver</li>
+								<ul><li>not user configurable</li></ul>
+							<li>Influencing factors:</li>
+							<ul>
+								<li>IOMMU capabilities</li>
+								<li>Endpoint device isolation</li>
+								<li>Bus and interconnect properties</li>
+							</ul>
+							<li>Heavily influences VFIO design</li>
+						</ul>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Memory Issues</h3>
@@ -302,7 +319,7 @@ DESCRIPTION
 							</ul>
 						</ul>
 						<p>&nbsp;</p>
-						<p align="left" class="fragment">Solution: Page pinning<p>
+						<p class="fragment">Solution: Page pinning<p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>A few downsides...</h3>
@@ -429,15 +446,24 @@ DESCRIPTION
 					<section data-state="logo-dark">
 						<h3>irqfd</h3>
 						<ul>
-							<li>eventfds signal events</li>
-							<li>irqfds receive event signals</li>
-							<li>eventfds can signal irqfds</li>
-							<li>KVM supports VM interrupts through irqfd</li>
-							<li>One step process: host &rarr; KVM</li>
+							<li class="fragment">eventfds signal events</li>
+							<li class="fragment">irqfds receive event signals</li>
+							<li class="fragment">eventfds can signal irqfds</li>
+							<li class="fragment">KVM supports VM interrupts through irqfd</li>
+							<li class="fragment">One step process: host &rarr; KVM</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Accelerating IRQs in hardware</h3>
+						<ul>
+							<div class="fragment">
 							<li>APIC Virtualization (Intel APICv)</li>
 								<ul><li>Exit-less interrupts into VM</li></ul>
+							</div>
+							<div class="fragment">
 							<li>VT-d Posted Interrupts</li>
 								<ul><li>Interrupts direct to vCPU</li></ul>
+							</div>
 						</ul>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
@@ -448,18 +474,23 @@ DESCRIPTION
 						<h3>Enabling DMA for the VM</h3>
 						<h4>Two options</h4>
 						<ul>
-							<li>Emulated/para-virtulized IOMMU</li>
-							<ul>
+							<li class="fragment" data-fragment-index="1">Emulated/para-virtulized IOMMU</li>
+							<ul class="fragment" data-fragment-index="2">
 								<li>IOMMU on x86 is optional</li>
 								<li>Cannot require guest use it for DMA</li>
 								<li>Overhead for dynamic mappings</li>
 								<li>Not actually an option</li>
 							</ul>
-							<li>Transparent VM mapping</li>
-							<ul>
+							<li class="fragment" data-fragment-index="1">Transparent VM mapping</li>
+							<ul class="fragment" data-fragment-index="3">
 								<li>Map entire VM physical address space</li>
 								<li>Guest OS unaware of IOMMU, DMA is physical</li>
 							</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>PCI Device assignment with VFIO</h3>
+						<h4>The Complete Picture</h4>
+						<a><img data-src="./images/vfio-to-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
 					</section>
 <!--
 						<p align="left"  class="fragment" data-fragment-index="1">Programmed I/O: IN/OUT, read/write</p>
