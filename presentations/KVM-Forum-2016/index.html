@@ -492,62 +492,42 @@ DESCRIPTION
 						<h4>The Complete Picture</h4>
 						<a><img data-src="./images/vfio-to-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
 					</section>
-<!--
-						<p align="left"  class="fragment" data-fragment-index="1">Programmed I/O: IN/OUT, read/write</p>
-						<ul>
-							<li class="fragment" data-fragment-index="2">QEMU MemoryRegions</li>
-							<ul>
-								<li>Define 
-									<li class="fragment" data-fragment-index="2">MemoryRegion for each PCI BAR</li>
-									<li class="fragment" data-fragment-index="2">Base "slow" access</li>
-									<ul><li class="fragment" data-fragment-index="2">pread(2)/pwrite(2)</li></ul>
-									<li class="fragment" data-fragment-index="2">Overlapping MemoryRegions</li>
-									<li class="fragment" data-fragment-index="2">Overlay provies "fast" access</li>
-									<ul><li class="fragment" data-fragment-index="2">mmap(2)</li></ul>
-								<li class="fragment" data-fragment-index="2">Also useful for "quirks"</li>
-							</ul>
-						</ul>
-						<p align="left" class="fragment" data-fragment-index="1">PCI Configuration Space</p>
-					</section>
--->
-<!--
-					<section data-state="logo-dark">
-						<ul>
-							<li>Remaps device regions into VM address spaces</li>
-							<li>Adds additional emulation and virtualization</li>
-							<li>Maps the VM address spaces to the device</li>
-							<li>Wires and relays VM interrupts</li>
-							<li>Tries to <i>stay out of the way</i></li>
-						</ul>
-					</section>
-					<section data-state="logo-dark">
-						<h3>Staying out of the way 101</h3>
-						<ul>
-							<div class="fragment">
-							<li>DMA translation through the IOMMU</li>
-							<ul>
-								<li>Allows VM drivers to operate transparently</li>
-							</ul>
-							</div>
-							<div class="fragment">
-							<li>Direct mapped MMIO</li>
-							<ul>
-								<li>mmap(2) regions into userspace and to the VM</li>
-								<li>Eliminate QEMU from the data path</li>
-							</ul>
-							</div>
-							<div class="fragment">
-							<li>Accelerate interrupt paths</li>
-							<ul>
-								<li>Wire VFIO eventfds directly to KVM irqfds</li>
-								<li>Allow self-discovery of bypass mechanisms</li>
-							</ul>
-							</div>
-						</ul>
-					</section>
--->
 				</section>
-
+				<section data-background-transition="slide">
+					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
+						<h2>What's new for 2016?</h2>
+					</section>
+					<section data-state="logo-dark">
+						<h3>Intel Graphics Device (IGD) Assignment</h3>
+						<ul>
+							<li>Sandy Bridge+: "Legacy" mode</li>
+							<li>Broadwell+: Universal Passthrough (UPT) mode</li>
+							<li>Host: Linux v4.6+, QEMU 2.7+</li>
+							<li>See <a href="http://vfio.blogspot.com">http://vfio.blogspot.com</a> for details</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>No new <i>Code 43</i> problems!</h3>
+						<ul>
+							<li>Workaround for NVIDIA Hyper-V detection "bug"</li>
+<pre><code> -cpu ...,hv_vendor_id=KeenlyKVM
+</code></pre>
+<pre><code>  &lt;hyperv&gt;
+    &lt;vendor_id state='on' value='KeenlyKVM'/&gt;
+  &lt;/hyperv&gt;
+</code></pre>
+							<p>QEMU 2.5+, libvirt v1.3.3+</p>
+						</ul>
+					</section>
+					<section data-state="logo-dark">
+						<h3>"Mediated Device" Development</h3>
+						<ul>
+							<li>Talk: "vGPU on KVM - A VFIO Based Framework"</br>by Neo Jia &amp; Kirti Wankhede from NVIDIA</br>Thursday 10am</li>
+							<li>Collaboration with Intel, IBM, and Red Hat</li>
+							<li>Expose kernel-level virtual devices to userspace through VFIO API</li>
+						</ul>
+					</section>
+				</section>
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
 					<div style="margin-top:40%">
 						<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
