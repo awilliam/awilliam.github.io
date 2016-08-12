@@ -27,21 +27,21 @@
 		<div class="reveal">
 			<a id="logo-white"><img src="../images/Red_Hat_RGB_reverse.png" alt=""/></a>
 			<a id="logo-black"><img src="../images/Red_Hat_RGB.png" alt=""/></a>
+			<style>.header1 header:after { content: "Properties discovered via ioctls"; }</style>
 
 			<header style="position:absolute; left:10%; top:10%; z-index:100; font-size:1.55em"></header>
 
 			<div class="slides">
-				<section data-state="logo-light" data-background-image="../images/1574736-corporate-1.svg">
+				<section data-state="logo-light" data-background-image="../images/1748153-epic-building-2.png">
 					<p>&nbsp;</p>
+					<p align="center" style="font-size:70px"><font color=#ffffff>An Introduction to PCI Device Assignment with VFIO</font></p>
 					<p>&nbsp;</p>
-					<h3 align="left"><font color=#ffffff>An Introduction to PCI Device Assignment with VFIO</font></h3>
-					<p>&nbsp;</p>
-					<p align="left" style="font-size:25px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
+					<p align="center" style="font-size:30px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
 				</section>
 
 				<section data-background-transition="slide">
-					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
-						<h2>What is VFIO?</h2>
+					<section data-state="logo-light" data-background-image="../images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>What is VFIO?</font></h2>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h2><font color=#cc0000><b>V</b></font>irtual <font color=#cc0000><b>F</b></font>unction <font color=#cc0000><b>I</b></font>/<font color=#cc0000><b>O</b></font></h2>
@@ -110,8 +110,8 @@
 				</section>
 
 				<section data-background-transition="slide">
-					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
-						<h2>How does VFIO do this?</h2>
+					<section data-state="logo-light" data-background-image="../images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>How does VFIO work?</font></h2>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>VFIO provides acccess to a device within a secure and programmable IOMMU context</h3>
@@ -144,7 +144,7 @@
 							</ul>
 							</div>
 							<div class="side fragment" data-fragment-index="2">
-								<a><img data-src="./images/Pci-config-space.svg" style="background:none; border:none; box-shadow:none;"></a>
+								<a><img data-src="./images/Pci-config-space.svg" width="100%" style="background:none; border:none; box-shadow:none;"></a>
 							</div>
 						</div>
 						<p style="font-size:20px" class="fragment" data-fragment-index="3">&lt;queue UNIX "everything is a file" theme song...&gt;</p>
@@ -185,23 +185,18 @@
 						<img data-src="./images/vfio-file-fd.png" style="background:none; border:none; box-shadow:none;">
 					</section>
 					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
-						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
 					</section>
 					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
-						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
-
 						<p>VFIO_DEVICE_GET_INFO</p>
 						<a><img data-src="./images/vfio_device_info.png" style="background:none; border:none; box-shadow:none;"></a>
 					</section>
 					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
-						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
 						<div align="left">
 							<p>VFIO_DEVICE_GET_REGION_INFO</p>
 							<a><img data-src="./images/vfio_region_info.png" style="background:none; border:none; box-shadow:none;"></a>
 						</div>
 					</section>
 					<section data-transition="concave" data-state="logo-dark header1" data-background-image="../images/1403716-greybackground.svg">
-						<style>.header1 header:after { content: "Users discover properties using ioctls"; }</style>
 						<div align="right">
 							<p>VFIO_DEVICE_GET_IRQ_INFO</p>
 							<a><img data-src="./images/vfio_irq_info.png" style="background:none; border:none; box-shadow:none;"></a>
@@ -333,7 +328,7 @@ DESCRIPTION
 					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Let's walk through an example</h3>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
           					<div data-svg-fragment="./images/vfio-files.svg#[*|label=base]">
             						<a class="fragment" title="[*|label=fragment1]"></a>
             						<a class="fragment" title="[*|label=fragment2]"></a>
@@ -348,7 +343,7 @@ DESCRIPTION
             						<a class="fragment" title="[*|label=fragment11]"></a>
           					</div>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
 						<h2>VFIO <i>in a nutshell</i></h2>
           					<div data-svg-fragment="./images/vfio-overview.svg#[*|label=base]">
             						<a class="fragment" title="[*|label=fragment1]"></a>
@@ -363,24 +358,24 @@ DESCRIPTION
 				</section>
 
 				<section data-background-transition="slide">
-					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
-						<h2>Recomposing a device</h2>
+					<section data-state="logo-light" data-background-image="../images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>Recomposing a device</font></h2>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
 						<h3 align="left">Deconstructed device in userspace...</h3>
           					<div data-svg-fragment="./images/vfio-qemu.svg#[*|label=base]">
             						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
           					</div>
 						<h3 align="right" class="fragment" data-fragment-index="1">...turns into assigned device</h3>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
           					<div data-svg-fragment="./images/qemu.svg#[*|label=base]">
             						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
             						<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
           					</div>
 						<p class="fragment" data-fragment-index="2" align="right"><i>"Creating fake devices since 2003"</i></p>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Same questions, different perspective</h3>
 						<ul>
 							<li>How does the guest program a device?</li>
@@ -388,7 +383,7 @@ DESCRIPTION
 							<li>How does a device transfer data?</li>
 						</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Device Programming</h3>
 						<p>How does VM programmed I/O reach a device?<p>
 						<ul>
@@ -399,7 +394,7 @@ DESCRIPTION
 						</ul>
 					</section>
 				
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>MemoryRegion Layering</h3>
 						<ul>
 							<li>"Slow" read/write base layer</li>
@@ -407,7 +402,7 @@ DESCRIPTION
 							<li>"Quirks" to correct device virtualization issues</li>
 						</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
           					<div data-svg-fragment="./images/vfio-memoryregions.svg#[*|label=base]">
             						<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
             						<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
@@ -418,7 +413,7 @@ DESCRIPTION
             						<a class="fragment" data-fragment-index="7" title="[*|label=fragment7]"></a>
 						</div>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Device Programming</h3>
 						<p>How do VM PCI Config accesses reach a device?<p>
 						<ul>
@@ -432,7 +427,7 @@ DESCRIPTION
 							</ul>
 						</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Interrupt Signaling</h3>
 						<ul>
 							<li>QEMU configures vfio interrupt ioctl for device state</li>
@@ -443,7 +438,7 @@ DESCRIPTION
 							<li>How to make it faster?</li>
 						</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>irqfd</h3>
 						<ul>
 							<li class="fragment">eventfds signal events</li>
@@ -453,7 +448,7 @@ DESCRIPTION
 							<li class="fragment">One step process: host &rarr; KVM</li>
 						</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Accelerating IRQs in hardware</h3>
 						<ul>
 							<div class="fragment">
@@ -470,11 +465,11 @@ DESCRIPTION
 						<h3 class="fragment fade-out" data-fragment-index="1">Last question</h3>
 						<h3 class="fragment" data-fragment-index="1">How does a device transfer data?<h3>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/1403716-greybackground.svg">
 						<h3>Enabling DMA for the VM</h3>
 						<h4>Two options</h4>
 						<ul>
-							<li class="fragment" data-fragment-index="1">Emulated/para-virtulized IOMMU</li>
+							<li class="fragment" data-fragment-index="1">Emulated/para-virtualized IOMMU</li>
 							<ul class="fragment" data-fragment-index="2">
 								<li>IOMMU on x86 is optional</li>
 								<li>Cannot require guest use it for DMA</li>
@@ -487,45 +482,67 @@ DESCRIPTION
 								<li>Guest OS unaware of IOMMU, DMA is physical</li>
 							</ul>
 					</section>
-					<section data-state="logo-dark">
+					<section data-state="logo-dark" data-background-image="../images/whitebackground.svg">
 						<h3>PCI Device assignment with VFIO</h3>
 						<h4>The Complete Picture</h4>
 						<a><img data-src="./images/vfio-to-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
 					</section>
 				</section>
 				<section data-background-transition="slide">
-					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
-						<h2>What's new for 2016?</h2>
+					<section data-state="logo-light" data-background-image="../images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>What's new for 2016?</font></h2>
 					</section>
-					<section data-state="logo-dark">
-						<h3>Intel Graphics Device (IGD) Assignment</h3>
+					<section data-state="logo-light" data-background-image="../images/1748152-epic-windows.png">
+						<h3><font color=#ffffff>Intel Graphics Device (IGD) Assignment</font></h3>
+						<font color=#ffffff>
 						<ul>
-							<li>Sandy Bridge+: "Legacy" mode</li>
-							<li>Broadwell+: Universal Passthrough (UPT) mode</li>
-							<li>Host: Linux v4.6+, QEMU 2.7+</li>
-							<li>See <a href="http://vfio.blogspot.com">http://vfio.blogspot.com</a> for details</li>
+							<li><font color=#e0e0e0>Sandy Bridge+: "Legacy" mode</font></li>
+							<li><font color=#e0e0e0>Broadwell+: Universal Passthrough (UPT) mode</font></li>
+							<li><font color=#e0e0e0>Host: Linux v4.6+, QEMU 2.7+</font></li>
+							<li><font color=#e0e0e0>See <a href="http://vfio.blogspot.com"><font color=#a0a0a0>http://vfio.blogspot.com</font></a> for details</font></li>
 						</ul>
+						</font>
 					</section>
-					<section data-state="logo-dark">
-						<h3>No new <i>Code 43</i> problems!</h3>
-						<ul>
-							<li>Workaround for NVIDIA Hyper-V detection "bug"</li>
+					<section data-state="logo-light" data-background-image="../images/1748156-epic-terrace-fields-red.png">
+						<h3><font color=#ffffff>No new <i>Code 43</i> problems!</font></h3>
+						<p><font color=#e0e0e0>Workaround for NVIDIA Hyper-V detection "bug"</font></p>
+<div style="width:70%; margin-left:15%">
 <pre><code> -cpu ...,hv_vendor_id=KeenlyKVM
 </code></pre>
 <pre><code>  &lt;hyperv&gt;
+    ...
     &lt;vendor_id state='on' value='KeenlyKVM'/&gt;
+    ...
   &lt;/hyperv&gt;
 </code></pre>
-							<p>QEMU 2.5+, libvirt v1.3.3+</p>
-						</ul>
+</div>
+						<p><font color=#e0e0e0>QEMU 2.5+, libvirt v1.3.3+</font></p>
 					</section>
-					<section data-state="logo-dark">
-						<h3>"Mediated Device" Development</h3>
+					<section data-state="logo-light" data-background-image="../images/1748165-epic-clouds-1.png">
+						<h3><font color=#ffffff>"Mediated Device" Development</font></h3>
+						<font color=#ffffff>
+						<blockquote style="width:80%; background: rgba(0, 0, 0, 0.2); box-shadow: 10px 10px 20px rgba(0,0,0,0.5);">
+						 	<p align="center"><font color=#ffffff><b>vGPU on KVM - A VFIO Based Framework</b></font></br><font style="font-size:35px" color=#e0e0e0>by Neo Jia &amp; Kirti Wankhede from NVIDIA</br>Thursday 10am</font></p>
+						</blockquote>
 						<ul>
-							<li>Talk: "vGPU on KVM - A VFIO Based Framework"</br>by Neo Jia &amp; Kirti Wankhede from NVIDIA</br>Thursday 10am</li>
-							<li>Collaboration with Intel, IBM, and Red Hat</li>
-							<li>Expose kernel-level virtual devices to userspace through VFIO API</li>
+							<li><font color=#e0e0e0>Collaboration with Intel, IBM, and Red Hat</font></li>
+							<li><font color=#e0e0e0>Expose kernel-level virtual devices to userspace</br>using VFIO API</font></li>
 						</ul>
+						</font>
+					</section>
+					<section data-state="logo-light" data-background-image="../images/1748151-epic-mountains.png">
+						<h2><font color=#ffffff>Resources</font></h2>
+						<font color=#ffffff>
+						<ul>
+							<li><a href="http://vfio.blogspot.com"><font color=#d0d0d0>http://vfio.blogspot.com</font></a></li>
+								<ul>
+									<li><a href="http://vfio.blogspot.com/2014/08/iommu-groups-inside-and-out.html"><font color=#e0e0e0>IOMMU Groups, inside and out</font></a></li>
+									<li><a href="http://vfio.blogspot.com/2015/05/vfio-gpu-how-to-series-part-1-hardware.html"><font color=#e0e0e0>VFIO GPU How-To Series</font></a></li>
+								</ul>
+							<li><a href="https://www.redhat.com/mailman/listinfo/vfio-users"><font color=#d0d0d0>vfio-users mailing list</font></a></li>
+							<li><font color=#e0e0e0>#vfio-users on freenode</font></li>
+						</ul>
+						</font>
 					</section>
 				</section>
 				<section data-state="logo-none" data-background-image="../images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
@@ -555,6 +572,12 @@ DESCRIPTION
 					  condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
 				]
 			});
+			//Reveal.configure({
+				//keyboard: {
+					//40: 'next',
+					//38: 'prev',
+				//}
+			//});
 		</script>
 	</body>
 </html>
