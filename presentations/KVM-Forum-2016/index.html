@@ -484,20 +484,32 @@ DESCRIPTION
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2.svg">
 						<h3>Summary</h3>
-						<ul>
-							<li>How does the guest program a device?</li>
-							<ul>
-								<li>MemoryRegions</li>
-							</ul>
-							<li>How does a device signal the guest?</li>
-							<ul>
-								<li>EventNotifiers</li>
-							</ul>
-							<li>How does a device transfer data?</li>
-							<ul>
-								<li>MemoryListeners</li>
-							</ul>
-						</ul>
+						<div align="left" style="margin-left:10%">
+							<p>
+								&bull;&nbsp;How does the guest program a device?
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>QEMU:</font> MemoryRegions<font style="font-size:25px"><sup>*</sup></font>
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>VFIO:</font> Device file descriptor regions
+							</p>
+
+							<p>
+								&bull;&nbsp;How does a device signal the guest?
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>QEMU:</font> EventNotifiers
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>VFIO/KVM:</font> Eventfds/irqfds configured via ioctls
+							</p>
+							<p>
+								&bull;&nbsp;How does a device transfer data?
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>QEMU:</font> MemoryListeners
+								</br>
+								&nbsp;&nbsp;&nbsp;<font color=#cc0000>VFIO:</font> IOMMU mapping &amp; pinning ioctls
+							</p>
+						</div>
+						<p>&nbsp;</p>
+						<p><font style="font-size:25px"><sup>*</sup>Except PCI configuration space</font></p>
 					</section>
 					<section data-state="logo-dark" data-background-image="../images/1574743-corporate-2-white.svg">
 						<h3>PCI Device assignment with VFIO</h3>
