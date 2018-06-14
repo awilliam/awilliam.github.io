@@ -28,36 +28,488 @@
 		<div class="reveal">
 			<a id="logo-white"><img src="images/Red_Hat_RGB_reverse.png" alt=""/></a>
 			<a id="logo-black"><img src="images/Red_Hat_RGB.png" alt=""/></a>
+			<a id="logo-title"><img src="images/Red_Hat_RGB_reverse.png" alt=""/></a>
 
 			<header style="position:absolute; left:10%; top:10%; z-index:100; font-size:1.55em"></header>
 
 			<div class="slides">
-				<section data-state="logo-light" data-background-image="images/1748153-epic-building-2.png">
+				<!-- Title -->
+				<section data-state="logo-first" data-background-image="images/1748153-epic-building-2.png">
+					<div style="margin-top:20%">
+					<p align="left" style="font-size:60px"><b><font color=#ffffff>VFIO Device Assignment Quirks</font></b></p>
+					<p align="left" style="font-size:40px"><b><font color=#ffffff>...and how to avoid them in your hardware</font></b></p>
 					<p>&nbsp;</p>
-					<p align="center" style="font-size:60px"><b><font color=#ffffff>VFIO Device Assignment Quirks</font></b></p>
-					<p align="center" style="font-size:40px"><font color=#ffffff>...and how to avoid them in your hardware</font></p>
-					<p>&nbsp;</p>
-					<p align="center" style="font-size:30px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
-				</section>
-
-<!--
- - Requester ID, are you who you say you are?
- - Device reset
- - Register alignment, particularly for MSI-X and sub-page BARs
- - Non-standard interrupt programming, config space and BAR backdoors
- - Discrete vs integrated devices
- - Device isolation (of course)
-Maybe start out with IOMMUs, what they mean to device assignment, and
-what parts of a device need to be virtualized.
--->
-				<section>
-
-				</section>
-
-				<section data-state="logo-none" data-background-image="images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
-					<div style="margin-top:40%">
-						<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
+					<p align="left" style="font-size:30px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
 					</div>
+				</section>
+
+				<!-- VFIO Refresher -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/2685778-bridge.jpg">
+						<h2><font color=#ffffff>A quick VFIO refresher</font></h2>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>VFIO: A userspace driver interface</font></h3>
+						<a><img data-src="images/vfio-overview.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000>Devices are decomposed into a userspace API</font></p>
+						<aside class="notes">
+							<h3><font color=#000000>API Overview</font></h3>
+							<ul>
+								<li>Physical devices are grouped based on isolation provided by IOMMU and bus topology</li>
+								<li>Groups are added to containers which define an IOMMU context for one or more groups</li>
+								<li>Devices are exposed as a file descriptor retrieved from the group</li>
+								<li>Device access provided through offsets in the device file descriptor (regions)</li>
+								<li>Device file ioctls provide introspection of region and interrupt capabilities</li>
+								<li>Device interrupts programmed through ioctls and delivered via eventfd</li>
+							</ul>
+						</aside>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>QEMU consumes the VFIO API</font></h3>
+						<a><img data-src="images/vfio-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000>Recomposing the physical device to a virtual device</font></p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>For further details:</font></h3>
+						<a><img data-src="images/vfio-to-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000><a href=https://www.youtube.com/watch?v=WFkdTFTOTpA>KVM Forum 2016: "An Introduction to PCI Device Assignment with VFIO"</a></font></p>
+					</section>
+				</section>
+
+				<!-- Overview -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748156-epic-terrace-fields-red.png">
+						<h2><font color=#ffffff>Device Assignment Requirements</font></h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requirements</font></h3>
+						<ul>
+							<li>Virtualization</li>
+							<li>Identification</li>
+							<li>Isolation</li>
+							<li>Reproducibility</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Virtualization -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748165-epic-clouds-1.png">
+						<h2><font color=#ffffff>Virtualization</font></h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requirement: Virtualization</font></h3>
+						<ul>
+							<li>Hypervisor transposes device from host address space to VM address space</li>
+							<li>IOMMU only accounts for DMA translation</li>
+							<li>Virtualization required for:</li>
+							<ul>
+								<li>Mapping device MMIO and I/O port resources</li>
+								<li>Translating interrupt address spaces</li>
+								<li>Topology translations</li>
+								<li>External dependencies</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>PCI Resource Mapping</font></h3>
+						<a><img data-src="images/Pci-config-space-bars.png" style="width:65%; height:65%; background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>PCI BARs</font></h3>
+						<ul>
+							<li>Describes resource type and features</li>
+								<ul><li>MMIO vs I/O port, 32-bit, caching, etc</li></ul>
+							<li>Exposes resource size</li>
+							<li>Locates resources within address space&hellip;</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>User cannot relocate physical resource,<br />BARs must be virtualized and mapped<br />into VM address space</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>PCI BAR Virtualization</font></h3>
+						<ul>
+							<li>Pass-through type and feature bits</li>
+							<li>Emulate BAR sizing interface</li>
+							<li>Map resources into VM address space</li>
+							<li>Host resource address remains static</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>Emulate the standard programming<br />model defined by PCI</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Except&hellip;</font></h3>
+						<p>Is PCI configuration space the only<br />way to access these registers?</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Config Space Backdoors</font></h3>
+						<ul>
+							<li>PCI defines the configuration address<br />space and register definition</li>
+							<li>Register implementation is not defined</li>
+							<li>Implementations may expose configuration<br />space registers via multiple address spaces</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Example Backdoors</font></h3>
+						<ul>
+							<li>Config space mirrors in MMIO BAR spaces</li>
+							<li>Window/data registers to config space<br />through I/O port BARs</li>
+							<li>VGA register hooks to BAR offsets</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p><font color=#000000><b>Result: PCI config space virtualization is not sufficient for all devices</b></font></p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Needed:</font></p>
+						<p>Infrastructure for virtualizing config space registers across all address spaces</p>
+						<p>&nbsp;</p>
+						<p class="fragment fade-in">Our first quirk&hellip;</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>VFIOQuirks</font></h3>
+						<ul>
+							<li>QEMU-based quirks</li>
+							<li>Infrastructure within VFIOPCIDevice<br />for handling device specific quirks</li>
+							<li>Helpers to facilitate common mirrors<br />and windows to PCI config space</li>
+							<li>Extensive use of MemoryRegions</li>
+							<li>VFIOQuirks are sub-regions within<br />the default region mapping</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Problem solved?</font></h3>
+						<ul>
+							<li>KVM maps MMIO at PAGE_SIZE granularity</li>
+							<li>Any quirk within an otherwise directly mapped<br />page traps the entire page through QEMU</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>What other registers reside within the page?</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Case Study: NVIDIA</font></h3>
+						<ul>
+							<li>MSI <i>&ldquo;ACK&rdquo;</i> required to retrigger interrupt</li>
+							<li>MMIO write through BAR0 config mirror</li>
+							<li>Increases MSI re-triggering latency</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>(partially addressed with ioeventfd handling)</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>But device resource mappings are not the only ranges needing virtualization&hellip;</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Interrupt Address Space</font></h3>
+						<p>Message Signaled Interrupts (MSI) trigger by writing pre-programmed data to a pre-programmed address</p>
+						<a><img data-src="images/msi.png" style="width:70%; height:70%; background:none; border:none; box-shadow:none;"></a>
+						<p>Both of these require address space virtualization</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>MSI is entirely configured through PCI configuration space, already virtualized&hellip;</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>MSI-X</font></h3>
+						<p>Address/Data specified per vector within<br />MMIO BAR resident vector table</p>
+						<a><img data-src="images/msix-vector-table.png" style="width:60%; height:60%; background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>MSI-X Vector Table</font></h3>
+						<ul>
+							<li>Resides within MMIO BAR</li>
+							<li>Requires address space translation</li>
+							<li>Opportunities for backdoors</li>
+							<li>Page size virtualization granularity</li>
+							<ul>
+								<li>No performance critical registers within<br />same page as MSI-X structures</li>
+								<li>Some architectures use <b>64KB</b> page size</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>MSI-X Vector Table Recommendations</font></h3>
+						<ul>
+							<li>Use an exclusive BAR for MSI-X data structures</li>
+							<li>Or, allow ample alignment of structures (64KB)</li>
+							<li>For existing devices, &ldquo;x-msix-relocation&rdquo;:</li>
+							<ul>
+								<li>QEMU vfio-pci device option</li>
+								<li>Modifies MSI-X capability to relocate to new BAR or extend existing BAR for alignment</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Topology &amp; Firmware Considerations</font></h3>
+						<ul>
+							<li>Does the device driver depend on or assume<br />PCI capability presence or offsets?</li>
+							<ul>
+								<li>Virtualization may change, move, or hide</li>
+							</ul>
+							<li>Does the device depend on other devices,<br />firmware tables, or reserved memory?</li>
+							<ul>
+								<li>Intel IGD (GVT-d): All of the above!</li>
+								<li><i>Integrated</i> vs <i>Discrete</i> mindset</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1748213-drawing2.svg">
+						<h3><font color=#000000>Lessons</font></h3>
+						<ul>
+							<li>Avoid &ldquo;backdoors&rdquo; to PCI config space</li>
+							<li>Use VFIOQuirks to fill virtualization gaps</li>
+							<li>Be mindful of virtualization granularity</li>
+							<li>Avoid external dependencies and<br />hardwired assumptions</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>Corollary: Assigned device config space accesses may be slower than bare metal<p>
+					</section>
+				</section>
+
+				<!-- Identification -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748152-epic-windows.png">
+						<h2><font color=#ffffff>Identification</font></h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requirement: Identification</font></h3>
+						<ul>
+							<li>IOMMU hardware must be able to associate<br />each device to a translation context</li>
+							<li>Native PCIe devices use unique Requester ID</li>
+							<li>Platform devices use Stream IDs or ACPI IDs</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1748213-drawing2.svg">
+						<h3>IOMMU context lookup by PCIe requester ID (bus:dev.fn)</h3>
+						<a><img data-src="images/vtd-context.png" style="width:70%; height:70%; background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>What requester ID<br />does the IOMMU see?</h3>
+						<a><img data-src="images/hello.png" style="width:90%; height:90%; background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requester ID Issues</font></h3>
+						<ul>
+							<li>Bus topology can create DMA aliases</li>
+								<ul><li>No requester ID on conventional PCI</li></ul>
+							<li>Requester ID failures:</li>
+							<ul>
+								<li><i>Shared</i> requester IDs</li>
+								<li><i>Ghost</i> functions</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>pci_add_dma_alias()</font></h3>
+						<ul>
+							<li>Linux kernel PCI quirk</li>
+							<li>DMA aliases incorporated into IOMMU grouping</li>
+							<li>Aliases to any device:fn on the same bus</li>
+							<li>Context entries mapped for all aliases of device</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>DMA Alias</h3>
+						<a><img data-src="images/alias2.png" style="width:90%; height:90%; background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>When to use this quirk</font></h3>
+						<p>DMA requester ID does not strictly match the PCIe endpoint address</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>How to avoid this quirk</font></h3>
+						<p>DMA requester ID must strictly match PCIe endpoint address initiating DMA transaction</p>
+						<p>&nbsp;</p>
+						<p>IOMMU context entries evident from topology</p>
+					</section>
+				</section>
+
+				<!-- Isolation -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748149-epic-building-1-red.png">
+						<h2><font color=#ffffff>Isolation</font></h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requirement: Isolation</font></h3>
+						<ul>
+							<li>Assigned devices must not interfere with or have access to memory except as explicitly allowed</li>
+							<li>DMA isolation is provided through an IOMMU</li>
+							<li>IOMMU granularity defines the minimum<br />isolation group</li>
+							<li>Device and bus topology features may<br />expand this IOMMU group</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>IOMMU Isolation</font></h3>
+						<a><img data-src="images/p2p-dma.svg" style="background:none; border:none; box-shadow:none;"></a>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Topology Isolation: PCIe ACS</font></h3>
+						<ul>
+							<li>PCIe Access Control Services (ACS) capabilities define upstream packet routing</li>
+							<li>Without ACS packet redirection possible at:</li>
+							<ul>
+								<li>PCIe Downstream Ports</li>
+								<li>PCIe Multifunction Endpoints</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Hardware PCIe ACS Support</font></h3>
+						<ul>
+							<li><font color=#900000><b>Many</b></font> PCIe downstream ports lack ACS</li>
+							<li><font color=#900000><b>Many</b></font> PCIe multifunction endpoints lack ACS</li>
+							<li>Some ACS implementations don't match the specification standard</li>
+						</ul>
+						<p>IOMMU groups assume worst case routing</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>What quirks do we have in our toolbox for ACS isolation issues?</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>pci_dev_specific_acs_enabled()</font></h3>
+						<ul>
+							<li>Linux kernel PCI quirk</li>
+							<li>Allows ACS <i><b>equivalent</b></i> isolation to be exposed</li>
+							<li>Hardware vendor <i><b>guarantees</b></i> hardware behavior</li>
+							<li>Used by downstream ports and multifunction endpoints (many vendors, many devices)</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>pci_dev_specific_enable_acs()</font></h3>
+						<ul>
+							<li>Linux kernel PCI quirk</li>
+							<li>Device specific setup of ACS equivalent isolation</li>
+							<li>Often used in conjunction with pci_dev_specific_acs_enabled()</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>When to use these quirks</font></h3>
+						<ul>
+							<li>PCIe downstream port or multifunction endpoint with broken or missing ACS</li>
+							<li>Hardware vendor <font color=#900000><i><b>guarantees ACS equivalent</b></i></font> routing features</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1748213-drawing2.svg">
+						<h3><font color=#000000>How to avoid these quirks</font></h3>
+						<div class="side-by-side">
+							<div class="side">
+								<p>Implement <i>standard</i> PCIe ACS capabilies in all downstream ports and multifunction endpoints</p>
+							</div>
+							<div class="side">
+						<a><img data-src="images/PCIe-topology.png" style="width:100%; height:100%; background:none; border:none; box-shadow:none;"></a>
+							</div>
+						</div>
+						<!--<p>Device and topology-based isolation will be automatically exposed</p>-->
+					</section>
+				</section>
+
+				<!-- Reproducibility -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748151-epic-mountains.png">
+						<h2><font color=#ffffff>Reproducibility</font></h2>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Requirement: Reproducibility</font></h3>
+						<ul>
+							<li>Method to put a device into a consistent state</li>
+							<li>Prevents data leakage between users</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>How do we put a device into a consistent state for reproducible device assignment results?</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>PCI Resets</font></h3>
+						<ul>
+							<li>Function Level Reset (FLR)</li>
+								<ul><li>PCIe &amp; AF capabilities</li></ul>
+							<li>Hotplug Slot &amp; Secondary Bus Reset</li>
+							<li>Power Management (PM) capability reset</li>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Reset Problems</font></h3>
+						<ul>
+							<li>Bus &amp; Slot reset scope</li>
+							<li>Scarce FLR support outside of SR-IOV VFs</li>
+							<li>Poorly defined PM reset</li>
+							<li>Reset incompatibility...</li>
+							<ul>
+								<li>Endpoints fail to recover from bus reset</li>
+								<li>Downstream ports fail during bus reset</li>
+								<li>Resets may be ineffective</li>
+								<li>Lack of any reset mechanism</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3>Quirks</h3>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>pci_dev_specific_reset()</font></h3>
+						<ul>
+							<li>Linux kernel PCI quirk</li>
+							<li>Override or implement PCI endpoint reset</li>
+							<li>Few users</li>
+								<ul><li>Requires device specific knowledge</li></ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1748213-drawing2.svg">
+						<h3><font color=#000000>PCI_DEV_FLAGS_NO_BUS_RESET</font></h3>
+						<ul>
+							<li>Linux kernel PCI quirk</li>
+							<li>Flag in <i>struct pci_dev</i> set via FIXUP quirk</li>
+							<li>Available for endpoints and downstream ports</li>
+							<ul>
+								<li>No secondary bus reset from downstream port</li>
+								<li>No bus resets inclusive of endpoints with flag</li>
+							</ul>
+							<li>Tool of last resort</li>
+								<ul><li>Often eliminates only reset option</li></ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>VFIOPCIDevice.resetfn</font></h3>
+						<ul>
+							<li>QEMU vfio-pci device specific reset quirk</li>
+							<li>&ldquo;Second class&rdquo; reset</li>
+								<ul><li>Not sufficiently reliable/stable for kernel implementation</li></ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>How to Avoid Reset Quirks</font><br /><font color=#cc0000><b>Implement FLR</b></font></h3>
+						<p>&nbsp;</p>
+						<p>Minimally: Test both endpoints and downstream ports with secondary bus resets</p>
+					</section>
+				</section>
+
+
+				<!-- Wrap-up -->
+				<section data-background-transition="slide">
+					<!-- Summary -->
+					<section data-state="logo-light" data-background-image="images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>Summary</font></h2>
+						<font color=#ffffff>
+						<ul>
+							<li>Be mindful of device assignment<br />requirements in hardware</li>
+							<li>Avoid config space backdoors</li>
+							<li>Note alignment recommendations</li>
+							<li>Avoid topology and firmware<br />dependencies &amp; requirements</li>
+							<li>Test hardware with IOMMU enabled</li>
+							<li>Provide isolation and reset mechanisms</li>
+						</ul>
+						</font>
+					</section>
+
+					<!-- Questions -->
+					<section data-state="logo-light" data-background-image="images/1574736-corporate-1.svg">
+						<h2><font color=#ffffff>Questions?</font></h2>
+					</section>
+
+					<!-- Done! -->
+					<section data-background-color=#ffffff data-state="logo-none" data-background-image="images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
+						<div style="margin-top:40%">
+							<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
+						</div>
+					</section>
 				</section>
 			</div>
 		</div>
@@ -70,7 +522,10 @@ what parts of a device need to be virtualized.
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				controlsTutorial: false,
 				slideNumber: true,
+				controls: false,
+				progress: false,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },

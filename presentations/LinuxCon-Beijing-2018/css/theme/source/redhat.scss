@@ -22,7 +22,8 @@ $headingFont: 'Overpass',Overpass,Helvetica,helvetica,arial,sans-serif;
 $headingColor: #60605b;
 $headingLetterSpacing: -0.01em;
 $headingTextShadow: none;
-$backgroundColor: #ffffff;
+//$backgroundColor: #ececec;
+$backgroundColor: #f2f2f2;
 $linkColor: #781f1c;
 $linkColorHover: lighten( $linkColor, 20% );
 //$selectionBackgroundColor: #134674;
@@ -32,6 +33,17 @@ $headingTextTransform: none;
 .reveal a:not(.image) {
 	line-height: 1.3em;
 }
+
+#logo-title {
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.5s ease-out;
+	top: 10%;
+	right: 5%;
+	z-index: 1; }
+
+#logo-title img {
+	width: 10em; }
 
 #logo-white {
 	position: absolute;
@@ -54,6 +66,12 @@ $headingTextTransform: none;
 
 #logo-black img {
 	width: 5em; }
+
+.logo-first {
+	#logo-title {
+		opacity: 1; }
+	#logo-black {
+		opacity: 0; }}
 
 .logo-light {
 	#logo-white {

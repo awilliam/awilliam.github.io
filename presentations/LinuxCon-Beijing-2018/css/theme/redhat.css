@@ -8,6 +8,17 @@
 .reveal a:not(.image) {
   line-height: 1.3em; }
 
+#logo-title {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  top: 10%;
+  right: 5%;
+  z-index: 1; }
+
+#logo-title img {
+  width: 10em; }
+
 #logo-white {
   position: absolute;
   opacity: 0;
@@ -29,6 +40,12 @@
 
 #logo-black img {
   width: 5em; }
+
+.logo-first #logo-title {
+  opacity: 1; }
+
+.logo-first #logo-black {
+  opacity: 0; }
 
 .logo-light #logo-white {
   opacity: 1; }
@@ -60,8 +77,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #ffffff;
-  background-color: #ffffff; }
+  background: #f2f2f2;
+  background-color: #f2f2f2; }
 
 .reveal {
   font-family: "Overpass", Overpass, Helvetica, helvetica, arial, sans-serif;
