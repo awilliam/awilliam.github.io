@@ -4,10 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>KVM Forum 2018: VFIO Device Assignment Quirks, How to Use Them and How to Avoid Them</title>
+
+		<meta name="description" content="KVM Forum 2018: VFIO Device Assignment Quirks, How to Use Them and How to Avoid Them"/>
+		<meta name="author" content="Alex Williamson"/>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/redhat.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -23,9 +26,300 @@
 	</head>
 	<body>
 		<div class="reveal">
+			<a id="logo-white"><img src="images/Red_Hat_RGB_reverse.png" alt=""/></a>
+			<a id="logo-black"><img src="images/Red_Hat_RGB.png" alt=""/></a>
+			<a id="logo-title"><img src="images/Red_Hat_RGB_reverse.png" alt=""/></a>
+
+			<header style="position:absolute; left:10%; top:10%; z-index:100; font-size:1.55em"></header>
+
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!-- Title -->
+				<section data-state="logo-first" data-background-image="images/1748153-epic-building-2.png">
+					<div style="margin-top:20%">
+					<p align="left" style="font-size:60px"><b><font color=#ffffff>VFIO Device Assignment Quirks</font></b></p>
+					<p align="left" style="font-size:40px"><b><font color=#ffffff>How to Use Them and How to Avoid Them</font></b></p>
+					<p>&nbsp;</p>
+					<p align="left" style="font-size:30px"><font color=#d0d0d0>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#d0d0d0>alex.williamson@redhat.com</font></a></p>
+					</div>
+				</section>
+
+				<!-- VFIO Refresher -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/2685778-bridge.jpg">
+						<h2><font color=#ffffff>A quick VFIO refresher</font></h2>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>VFIO: A userspace driver interface</font></h3>
+						<a><img data-src="images/vfio-overview.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000>Devices are decomposed into a userspace API</font></p>
+						<aside class="notes">
+							<h3><font color=#000000>API Overview</font></h3>
+							<ul>
+								<li>Physical devices are grouped based on isolation provided by IOMMU and bus topology</li>
+								<li>Groups are added to containers which define an IOMMU context for one or more groups</li>
+								<li>Devices are exposed as a file descriptor retrieved from the group</li>
+								<li>Device access is provided through offsets in the device file descriptor (regions)</li>
+								<li>Device file ioctls provide introspection of region and interrupt capabilities</li>
+								<li>Device interrupts are programmed through ioctls and delivered via eventfd</li>
+							</ul>
+						</aside>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>QEMU consumes the VFIO API</font></h3>
+						<a><img data-src="images/vfio-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000>Recomposing the physical device to a virtual device</font></p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/whitebackground.svg">
+						<h3><font color=#000000>For further details:</font></h3>
+						<a><img data-src="images/vfio-to-qemu.svg" style="background:none; border:none; box-shadow:none;"></a>
+						<p align="center"><font color=#000000><a href=https://www.youtube.com/watch?v=WFkdTFTOTpA>KVM Forum 2016: "An Introduction to PCI Device Assignment with VFIO"</a></font></p>
+					</section>
+				</section>
+
+				<!-- Quirks -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748151-epic-mountains.png">
+						<h2><font color=#ffffff>Quirks</font></h2>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>What are <i>Quirks</i></font></h3>
+						<br/>
+						<div class="side-by-side">
+							<div class="side">
+								<p>Quirks are software bandages to account for missing or broken device or topology features, 
+								   or implement additional device virtualization</p>
+							</div>
+							<div class="side">
+						<a><img data-src="images/Band_Aid_Flat_Icon_Vector.svg" style="width:70%; height:90%; background:none; border:none; box-shadow:none;"></a>
+							</div>
+						</div>
+					</section>
+
+					<section data-state="logo-dark" data-background-color="#ffffff" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Where can we use Quirks?</font></h3>
+						<br/>
+						<div class="side-by-side">
+							<div class="side">
+						<a><img data-src="images/Gyroscope_precession.gif" style="width:70%; height:90%; background:none; border:none; box-shadow:none;"></a>
+							</div>
+							<div class="side">
+								<p>Anywhere, but our goal is to assign the device and let it run without further <i>fast path</i> interaction</p>
+							</div>
+						</div>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Where do we use Quirks?</font></h3>
+						<div data-svg-fragment="./images/vfio-to-qemu-bandaids.svg#[*|label=base]">
+							<a class="fragment" data-fragment-index="1" title="[*|label=fragment1]"></a>
+							<a class="fragment" data-fragment-index="2" title="[*|label=fragment2]"></a>
+							<a class="fragment" data-fragment-index="3" title="[*|label=fragment3]"></a>
+							<a class="fragment" data-fragment-index="4" title="[*|label=fragment4]"></a>
+							<a class="fragment" data-fragment-index="5" title="[*|label=fragment5]"></a>
+							<a class="fragment" data-fragment-index="6" title="[*|label=fragment6]"></a>
+						</div>
+					</section>
+				</section>
+
+				<!-- Examples -->
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/1748165-epic-clouds-1.png">
+						<h2><font color=#ffffff>Examples</font></h2>
+					</section>
+
+					<section data-state="logo-light" data-background-image="images/1748152-epic-windows.png">
+						<h2><font color=#ffffff>Disclaimer</font></h2>
+						<p align="left"><font color=#ffffff>Hardware mistakes and oversights happen.  It's fun to pick at vendors, but in many cases quirks represent cases where hardware vendors have worked with us to &ldquo;correct&rdquo; hardware behavior in software.  In some cases the corrections are evident in later generations of hardware.  This should be encouraged.</font></p>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Isolation</font></h3>
+						<ul>
+							<li>Can untranslated DMA reach other devices?</li>
+							<li>Access Control Services (ACS) enforces packet routing within PCIe topology</li>
+							<li>Without ACS, redirection is assumed</li>
+							<ul>
+								<li>IOMMU group size increases</li>
+								<li>Assignment granularity decreases</li>
+							</ul>
+							<li>Vendors can specify ACS <i>equivalent</i> routing</li>
+							<ul>
+								<li>Bandage the hardware in software</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Isolation: Examples</font></h3>
+						<ul>
+							<li>Intel PCH PCIe root ports</li>
+							<ul>
+								<li>5- through 9-series chipsets: No ACS</li>
+								<ul>
+									<li>Chipset specific equivalent features</li>
+								</ul>
+								<li>100- &amp; 200-series: Broken ACS</li>
+								<li>Fixed in 300-series chipsets!</li>
+							</ul>
+							<li>Intel &ldquo;client&rdquo; processor root ports</li>
+							<ul>
+								<li>No ACS, no isolation guarantees, no quirks</li>
+								<li>Use server processors &nbsp;&nbsp;<span class="fragment">:-\</span></li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Isolation: More Examples</font></h3>
+						<ul>
+							<li>AMD Ryzen root ports</li>
+							<ul>
+								<li>Fixed in firmware update</li>
+							</ul>
+							<li>Numerous ACS endpoint quirks for <b>many</b> vendors</li>
+							<ul>
+								<li>AMD, Ampere, Cavium, Emulex, Intel NICs, Qualcom, Solarflare</li>
+							</ul>
+						</ul>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Isolation: We're getting better</font></h3>
+						<div class="side-by-side">
+							<div class="side">
+								<ul>
+									<li>ACS is increasingly common on endpoint and interconnect components</li>
+									<li>Reminder: Implement ACS on all downstream ports and multifunction endpoints</li>
+								</ul>
+							</div>
+							<div class="side">
+								<img data-src="images/PCIe-topology.png" style="width:100%; height:100%; background:none; border:none; box-shadow:none;">
+							</div>
+						</div>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>DMA Aliases</font></h3>
+						<div class="side-by-side">
+							<div class="side">
+								<a><img data-src="images/hello.png" style="width:90%; height:90%; background:none; border:none; box-shadow:none;"></a>
+							</div>
+							<div class="side">
+								<ul>
+									<li>Does the DMA requester match the device address?</li>
+									<li>IOMMU cannot function for bare metal or device assignment if inconsistent</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>DMA Aliases: Examples</font></h3>
+						<ul>
+							<li>PCIe function 0 is the requester: Ricoh</li>
+							<li>PCIe function 1 is the requester: Marvell</li>
+							<li>A different PCI slot is the requester: Adaptec</li>
+							<li>Hidden requesters behind non-transparent bridge</li>
+						</ul>
+						<br/><br/>
+						<p>Hardware designs must consider an IOMMU and use predictable, discoverable requester IDs</p>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Resets</font></h3>
+						<ul>
+							<li>Return device to a known state</li>
+							<li>Wipe on-device data between uses</li>
+							<li>Multiple mechanisms through PCI:<br/>PCIe FLR, AF FLR, PM, bus reset, hot-plug slot</li>
+						</ul>
+						<br/><br/>
+						<p>Apparently still a difficult hardware feature</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Reset: Examples</font></h3>
+						<ul>
+							<li>Intel NMVe: extra post-FLR delay</li>
+							<li>Samsung NVMe: controller disable before FLR</li>
+							<li>AMD Radeon: bus reset bugs</li>
+							<li>Atheros: devices disappear on bus reset</li>
+							<li>Threadripper root ports fail after bus reset</li>
+							<ul>
+								<li>Fixed in firmware!</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Virtualization</font></h3>
+						<div class="side-by-side">
+							<div class="side">
+							<ul>
+								<li>The &ldquo;asterisk&rdquo; in the new QEMU device</li>
+								<li>All devices require some degree of virtualization</li>
+								<ul>
+									<li>Address space</li>
+									<li>Topology</li>
+								</ul>
+							</ul>
+							</div>
+							<div class="side">
+								<a><img data-src="images/new-device.svg" style="width:90%; height:90%; background:none; border:none; box-shadow:none;"></a>
+							</div>
+						</div>
+						<p>Some devices require a little extra virtualization&hellip;</p>
+					</section>
+					<section data-state="logo-dark" data-background-image="images/1574743-corporate-2-white.svg">
+						<h3><font color=#000000>Virtualization: Examples</font></h3>
+						<ul>
+							<li>VGA bootstrapping</li>
+							<ul>
+								<li>See <a href=https://www.linux-kvm.org/images/e/ed/Kvm-forum-2013-VFIO-VGA.pdf>2013</a> &amp; <a href=https://www.youtube.com/watch?v=NhZ9eIpg2nM>2014</a> KVM Forum talks</li>
+								<li>Mirrors and windows to PCI config space</li>
+							</ul>
+							<li>Intel IGD GTT programming</li>
+							<li>Intel i40e INTx status register</li>
+							<li>Intel SR-IOV VF INTx pin masking</li>
+							<li>Realtek RTL8168 MSI-X programming</li>
+							<li>Chelsio T5 bogus MSI-X PBA fixup</li>
+							<li>General MSI-X relocation</li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-background-transition="slide">
+					<section data-state="logo-light" data-background-image="images/2259690-1456146375_Presentation_BG__1280x1024.jpg">
+						<h2><font color=#ffffff>Summary: Quirks</font></h2>
+						<font color=#ffffff>
+						<ul>
+							<li>Know your quirks</li>
+							<li>Available throughout the device assignment stack</li>
+							<li>Supplement missing and broken features</li>
+							<li>Mask device and address space issues</li>
+							<li>Not needed by <i>well behaved</i> <sup>&trade;</sup> devices</li>
+						</ul>
+						</font>
+					</section>
+					<section data-state="logo-light" data-background-image="images/1748156-epic-terrace-fields-red.png">
+						<h2><font color=#ffffff>For Hardware Designers</font></h2>
+						<font color=#ffffff>
+						<ul>
+							<li>Implement PCIe ACS per specification</li>
+							<ul>
+								<li>Downstream ports &amp; multifunction endpoints</li>
+							</ul>
+							<li>Provide <i>working</i> function level reset</li>
+							<li>Avoid leaking device physical addresses</li>
+							<li>Avoid page size issues with separate MSI-X BAR</li>
+						</ul>
+						</font>
+					</section>
+					<section data-state="logo-light" data-background-image="images/1748149-epic-building-1-red.png">
+						<h2><font color=#ffffff>Questions?</font></h2>
+					</section>
+					<section data-background-color=#ffffff data-state="logo-none" data-background-image="images/Red_Hat_RGB.svg" data-transition="zoom" data-background-transition="zoom" data-background-size="70%">
+						<div style="margin-top:40%">
+							<p><font color=#000000>Alex Williamson / </font><a href="mailto:alex.williamson@redhat.com"><font color=#cc0000>alex.williamson@redhat.com</font></a></p>
+						</div>
+					</section>
+				</section>
 			</div>
 		</div>
 
@@ -37,11 +331,18 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				controlsTutorial: false,
+				slideNumber: true,
+				controls: false,
+				progress: false,
+				//transition: 'none',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/svg-fragment/reveal-svg-fragment.js',
+					  condition: function() { return !!document.querySelector( '[data-svg-fragment]' ); } }
 				]
 			});
 		</script>
